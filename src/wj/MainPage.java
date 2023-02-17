@@ -4,6 +4,7 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
@@ -83,6 +84,10 @@ public class MainPage extends JFrame {
         table.getTableHeader().setForeground(Color.black);
         table.getTableHeader().setFont(new Font("正楷", 1, 14));
         table.setFont(new Font("正楷", 1, 14));
+
+        DefaultTableCellRenderer r=new DefaultTableCellRenderer();
+        r.setHorizontalAlignment(JLabel.CENTER);
+        table.setDefaultRenderer(Object.class,r);
 
         TableColumn column1 = table.getColumnModel().getColumn(0);
         column1.setMinWidth(50);
@@ -217,7 +222,7 @@ public class MainPage extends JFrame {
             getInstance().execute(new Runnable() {
                 @Override
                 public void run() {
-                    String result = sendGet("https://api.m.jd.com/?functionId=runningPageHome&body={%22linkId%22:%22L-sOanK_5RJCz7I314FpnQ%22,%22isFromJoyPark%22:false,%22joyLinkId%22:%22%22}&t=1676533172999&appid=activities_platform&client=android&clientVersion=4.8.2&cthr=1&uuid=2393667303366393-4603536646561393&build=2385&screen=360*780&networkType=UNKNOWN&d_brand=HUAWEI&d_model=TAS-AN00&lang=zh_CN&osVersion=10&partner=huawei&eid=eidA1f848122aesfwrFzq9FGSh6w8U4xvTMphsKxdTD8IPLDIQaqvVBkIzdYhFNHgzMNh2oyBI0yXSji04Z73TTmCZOP%2BomTs9BX4YZVnYFYmXicBqE2", "pt_key=AAJj5k30ADBLMvk6eQ7bpequzLl13Vac_bTxffF98UwQKqi5LXAdf9QsRlz0kariGRwXNDSdrgQ; pt_pin=jd_BwJBcaCjgtzL;");
+                    String result = sendGet("https://api.m.jd.com/?functionId=runningPageHome&body={%22linkId%22:%22L-sOanK_5RJCz7I314FpnQ%22,%22isFromJoyPark%22:false,%22joyLinkId%22:%22%22}&t=1676533172999&appid=activities_platform&client=android&clientVersion=4.8.2&cthr=1&uuid=2393667303366393-4603536646561393&build=2385&screen=360*780&networkType=UNKNOWN&d_brand=HUAWEI&d_model=TAS-AN00&lang=zh_CN&osVersion=10&partner=huawei&eid=eidA1f848122aesfwrFzq9FGSh6w8U4xvTMphsKxdTD8IPLDIQaqvVBkIzdYhFNHgzMNh2oyBI0yXSji04Z73TTmCZOP%2BomTs9BX4YZVnYFYmXicBqE2", ck);
                     System.out.println(result);
                     try {
                         JSONObject job = new JSONObject(result);
