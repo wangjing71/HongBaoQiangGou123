@@ -64,6 +64,11 @@ public class MainPage extends JFrame {
         setJbtBac(readCkBtn);
         c.add(readCkBtn);
 
+        JButton ceshi = new JButton("测试");
+        ceshi.setBounds(340, 480, 105, 60);
+        setJbtBac(ceshi);
+        c.add(ceshi);
+
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
@@ -89,7 +94,6 @@ public class MainPage extends JFrame {
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);  //Resizable:可调整大小的
-        this.setTitle("东东农场工具");
         this.setLayout(null);
         this.setVisible(true);
         WindowUtil.setWindowCenter(this);
@@ -106,6 +110,19 @@ public class MainPage extends JFrame {
                     @Override
                     public void run() {
                         startReadCk();
+                    }
+                }).start();
+            }
+        });
+
+        ceshi.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                addJtaStr("开始抢红包！");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        qiangHongbaoTask();
                     }
                 }).start();
             }
@@ -246,8 +263,8 @@ public class MainPage extends JFrame {
                 try {
                     String currentTime = TimeUtil.getTime();
 
-                    if (currentTime.contains("23:59:59")) {
-                        System.out.println("开始抢汪汪赛跑红包！");
+                    if (currentTime.contains("16:09:59")) {
+                        qiangHongbaoTask();
                     }
                     mainPage.setTitle("汪汪赛跑抢红包" + "--【时间】" + currentTime);
                 } catch (Exception e) {
@@ -326,17 +343,19 @@ public class MainPage extends JFrame {
         if (ClickUtil.isFastClick()) {
             return;
         }
+        System.out.println("开始抢汪汪赛跑红包！");
         if (ckBeanList == null || ckBeanList.size() == 0) {
+            System.out.println("ck为空 停止！");
             return;
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < ckBeanList.size(); i++) {
             String ck = ckBeanList.get(i).getCkStr();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
 
-                    for (int j = 0; j < 200; j++) {
+                    for (int j = 0; j < 100; j++) {
                         getInstance().execute(new Runnable() {
                             @Override
                             public void run() {
