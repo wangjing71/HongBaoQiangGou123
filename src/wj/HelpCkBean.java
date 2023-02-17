@@ -8,6 +8,16 @@ public class HelpCkBean {
 
     private String pin;
 
+    private String money ;
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
     public String getPin() {
         return pin;
     }

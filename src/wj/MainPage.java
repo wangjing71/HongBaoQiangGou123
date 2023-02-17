@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static wj.QiangGouUtil.qiangHongbaoTask;
+import static wj.QiangGouUtil.*;
 
 
 public class MainPage extends JFrame {
@@ -94,6 +94,11 @@ public class MainPage extends JFrame {
         column2.setMaxWidth(150);
         column2.setPreferredWidth(150);
 
+        TableColumn column3 = table.getColumnModel().getColumn(2);
+        column3.setMinWidth(50);
+        column3.setMaxWidth(50);
+        column3.setPreferredWidth(50);
+
         c.add(scrollpane);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -149,13 +154,15 @@ public class MainPage extends JFrame {
                     return "编号";
                 } else if (column == 1) {
                     return "帐号";
+                } else if (column == 2) {
+                    return "金额";
                 } else {
                     return "日志";
                 }
             }
 
             public int getColumnCount() {
-                return 3;
+                return 4;
             }
 
             public int getRowCount() {
@@ -167,6 +174,8 @@ public class MainPage extends JFrame {
                     return row + 1;
                 } else if (col == 1) {
                     return ckBeanList.get(row).getPin();
+                } else if (col == 2) {
+                    return ckBeanList.get(row).getMoney();
                 } else {
                     return ckBeanList.get(row).getState();
                 }
@@ -179,8 +188,8 @@ public class MainPage extends JFrame {
         String inputData = ckInputEdt.getText();
         System.out.println(inputData);
         String[] spits = inputData.split("\n");
-        if (ckBeanList.size() >= 10) {
-            System.out.println("最多10个ck！");
+        if (ckBeanList.size() >= 20) {
+            System.out.println("最多20个ck！");
             addJtaStr("最多10个ck！");
             return;
         }
@@ -188,7 +197,7 @@ public class MainPage extends JFrame {
         for (int i = 0; i < spits.length; i++) {
             String ck = spits[i];
             if (ck.length() > 5) {
-                if (ckBeanList.size() >= 10) {
+                if (ckBeanList.size() >= 20) {
                     break;
                 }
                 ckBeanList.add(new HelpCkBean(spits[i], "等待中"));
@@ -196,6 +205,31 @@ public class MainPage extends JFrame {
         }
         System.out.println("成功读取CK数量:" + ckBeanList.size());
         addJtaStr("成功读取CK数量:" + ckBeanList.size());
+
+        getCkMoney();
+    }
+
+    private void getCkMoney() {
+        for (int i = 0; i < ckBeanList.size(); i++) {
+            HelpCkBean ckBean = ckBeanList.get(i);
+            String ck = ckBean.getCkStr();
+
+            getInstance().execute(new Runnable() {
+                @Override
+                public void run() {
+                    String result = sendGet("https://api.m.jd.com/?functionId=runningPageHome&body={%22linkId%22:%22L-sOanK_5RJCz7I314FpnQ%22,%22isFromJoyPark%22:false,%22joyLinkId%22:%22%22}&t=1676533172999&appid=activities_platform&client=android&clientVersion=4.8.2&cthr=1&uuid=2393667303366393-4603536646561393&build=2385&screen=360*780&networkType=UNKNOWN&d_brand=HUAWEI&d_model=TAS-AN00&lang=zh_CN&osVersion=10&partner=huawei&eid=eidA1f848122aesfwrFzq9FGSh6w8U4xvTMphsKxdTD8IPLDIQaqvVBkIzdYhFNHgzMNh2oyBI0yXSji04Z73TTmCZOP%2BomTs9BX4YZVnYFYmXicBqE2", "pt_key=AAJj5k30ADBLMvk6eQ7bpequzLl13Vac_bTxffF98UwQKqi5LXAdf9QsRlz0kariGRwXNDSdrgQ; pt_pin=jd_BwJBcaCjgtzL;");
+                    System.out.println(result);
+                    try {
+                        JSONObject job = new JSONObject(result);
+                        String prizeValue = job.optJSONObject("data").optJSONObject("runningHomeInfo").optString("prizeValue");
+                        System.out.println(prizeValue);
+                        ckBean.setMoney(prizeValue);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
     }
 
     private void setJbtBac(JButton jbt) {
