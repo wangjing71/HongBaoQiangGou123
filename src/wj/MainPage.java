@@ -1,5 +1,7 @@
 package wj;
 
+import org.json.JSONObject;
+
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumn;
@@ -263,7 +265,7 @@ public class MainPage extends JFrame {
                 try {
                     String currentTime = TimeUtil.getTime();
 
-                    if (currentTime.contains("16:09:59")) {
+                    if (currentTime.contains("23:59:59")) {
                         qiangHongbaoTask();
                     }
                     mainPage.setTitle("汪汪赛跑抢红包" + "--【时间】" + currentTime);
@@ -350,17 +352,33 @@ public class MainPage extends JFrame {
         }
 
         for (int i = 0; i < ckBeanList.size(); i++) {
-            String ck = ckBeanList.get(i).getCkStr();
+            HelpCkBean ckBean = ckBeanList.get(i);
+            String ck = ckBean.getCkStr();
             new Thread(new Runnable() {
                 @Override
                 public void run() {
 
-                    for (int j = 0; j < 100; j++) {
+                    for (int j = 0; j < 200; j++) {
                         getInstance().execute(new Runnable() {
                             @Override
                             public void run() {
+                                if ("true".equals(ckBean.getTag())) {
+                                    return;
+                                }
                                 String result = sendPost("https://api.m.jd.com/", "functionId=runningPrizeDraw&body={\"linkId\":\"L-sOanK_5RJCz7I314FpnQ\",\"type\":1,\"level\":3}&t=1676021936464&appid=activities_platform&client=android&clientVersion=4.8.2", ck);
                                 System.out.println(CKUtil.getCkPtPin(ck) + ":" + result);
+                                try {
+                                    //{"success":true,"code":7104,"errMsg":"success","data":null}
+//                                    result = "{\"success\":true,\"code\":7104,\"errMsg\":\"success\",\"data\":null}";
+                                    JSONObject job = new JSONObject(result);
+                                    String errMsg = job.optString("errMsg");
+                                    ckBean.setState(errMsg);
+                                    if ("success".equals(errMsg)) {
+                                        ckBean.setTag("true");
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                     }
