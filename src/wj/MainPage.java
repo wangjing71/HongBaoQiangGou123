@@ -101,54 +101,21 @@ public class MainPage extends JFrame {
     public AbstractTableModel getTableModel() {
         return new AbstractTableModel() {
             public int getColumnCount() {
-                return 6;
+                return 2;
             }
 
             public int getRowCount() {
-                return getData().size();
+                return ckBeanList.size();
             }
 
             public Object getValueAt(int row, int col) {
-                switch (col) {
-                    case (0): {
-                        return row + 1;
-                    }
-                    case (1): {
-                        return getData().get(row).split(" ", 0)[0];
-                    }
-                    case (2): {
-                        return getData().get(row).split(" ", 0)[1];
-                    }
-                    default:
-                        return getData().get(row).split(" ", 0)[2];
+                if (col == 0) {
+                    return ckBeanList.get(row).getCkStr();
+                } else {
+                    return ckBeanList.get(row).getState();
                 }
             }
         };
-    }
-
-    public java.util.List<String> getData() {
-        FileReader fr;
-        File file = new File(
-                "E:/my.txt");
-        int b;
-        StringBuffer sb = new StringBuffer();
-        java.util.List<String> s = new ArrayList<String>();
-        try {
-            fr = new FileReader(file);
-            while ((b = fr.read()) != -1) {
-                if (b != '\r') {
-                    sb.append((char) b);
-                }
-                if (b == '\n') {
-                    s.add(sb.toString());
-                    sb = new StringBuffer();
-                }
-            }
-            fr.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return s;
     }
 
     //读取输入框中ck
@@ -156,6 +123,11 @@ public class MainPage extends JFrame {
         String inputData = ckInputEdt.getText();
         System.out.println(inputData);
         String[] spits = inputData.split("\n");
+        if (ckBeanList.size() >= 10) {
+            System.out.println("最多10个ck！");
+            addJtaStr("最多10个ck！");
+            return;
+        }
 
         for (int i = 0; i < spits.length; i++) {
             String ck = spits[i];
