@@ -2,8 +2,12 @@ package wj;
 
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 
@@ -16,6 +20,11 @@ public class MainPage extends JFrame {
     public static String CURRENT_PATH = System.getProperty("user.dir");
 
     public static ArrayList<HelpCkBean> ckBeanList = new ArrayList<>();
+
+    TableModel dataModel;
+    JScrollPane scrollpane;
+    JTable table;
+    Timer timer;
 
     //构造函数
     public MainPage() {
@@ -49,51 +58,20 @@ public class MainPage extends JFrame {
         setJbtBac(readCkBtn);
         c.add(readCkBtn);
 
-
-        //定义二维数组作为表格数据
-        Object[][] tableData =
-                {
-                        new Object[]{"李清照", 29},
-                        new Object[]{"苏格拉底", 56},
-                        new Object[]{"李白", 35},
-                        new Object[]{"弄玉", 18},
-                        new Object[]{"虎头", 2},
-                        new Object[]{"李清照", 29},
-                        new Object[]{"苏格拉底", 56},
-                        new Object[]{"李白", 35},
-                        new Object[]{"弄玉", 18},
-                        new Object[]{"虎头", 2},
-                        new Object[]{"李清照", 29},
-                        new Object[]{"苏格拉底", 56},
-                        new Object[]{"李白", 35},
-                        new Object[]{"弄玉", 18},
-                        new Object[]{"虎头", 2},
-                        new Object[]{"李清照", 29},
-                        new Object[]{"苏格拉底", 56},
-                        new Object[]{"李白", 35},
-                        new Object[]{"弄玉", 18},
-                        new Object[]{"虎头", 2},
-                        new Object[]{"李清照", 29},
-                        new Object[]{"苏格拉底", 56},
-                        new Object[]{"李白", 35},
-                        new Object[]{"弄玉", 18},
-                        new Object[]{"虎头", 2},
-                        new Object[]{"李清照", 29},
-                        new Object[]{"苏格拉底", 56},
-                        new Object[]{"李白", 35},
-                        new Object[]{"弄玉", 18},
-                        new Object[]{"虎头", 2}
-
-                };
-        //定义一维数据作为列标题
-        Object[] columnTitle = {"姓名", "年龄"};
-
-        JTable table = new JTable(tableData, columnTitle);
+        dataModel = getTableModel();
+        table = new JTable(dataModel);
+        scrollpane = new JScrollPane(table);
+        timer = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                table.validate();
+                table.updateUI();
+            }
+        });
+        timer.start();
         table.setRowHeight(30);
-        table.setGridColor (new Color(180, 180, 180));
-        JScrollPane jScrollPane = new JScrollPane(table);
-        jScrollPane.setBounds(10, 5, 770, 390);
-        c.add(jScrollPane);
+        table.setGridColor(new Color(180, 180, 180));
+        scrollpane.setBounds(10, 5, 770, 390);
+        c.add(scrollpane);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);  //Resizable:可调整大小的
@@ -120,6 +98,57 @@ public class MainPage extends JFrame {
         });
     }
 
+    public AbstractTableModel getTableModel() {
+        return new AbstractTableModel() {
+            public int getColumnCount() {
+                return 6;
+            }
+            public int getRowCount() {
+                return getData().size();
+            }
+            public Object getValueAt(int row, int col) {
+                switch (col) {
+                    case (0): {
+                        return row + 1;
+                    }
+                    case (1): {
+                        return getData().get(row).split(" ", 0)[0];
+                    }
+                    case (2): {
+                        return getData().get(row).split(" ", 0)[1];
+                    }
+                    default:
+                        return getData().get(row).split(" ", 0)[2];
+                }
+            }
+        };
+    }
+
+    public java.util.List<String> getData() {
+        FileReader fr;
+        File file = new File(
+                "E:/my.txt");
+        int b;
+        StringBuffer sb = new StringBuffer();
+        java.util.List<String> s = new ArrayList<String>();
+        try {
+            fr = new FileReader(file);
+            while ((b = fr.read()) != -1) {
+                if (b != '\r') {
+                    sb.append((char) b);
+                }
+                if (b == '\n') {
+                    s.add(sb.toString());
+                    sb = new StringBuffer();
+                }
+            }
+            fr.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
+
     //读取输入框中ck
     private void startReadCk() {
         String inputData = ckInputEdt.getText();
@@ -128,7 +157,7 @@ public class MainPage extends JFrame {
 
         for (int i = 0; i < spits.length; i++) {
             String ck = spits[i];
-            if(ck.length()>5){
+            if (ck.length() > 5) {
                 ckBeanList.add(new HelpCkBean(spits[i]));
             }
         }
