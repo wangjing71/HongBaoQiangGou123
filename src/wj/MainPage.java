@@ -49,6 +49,52 @@ public class MainPage extends JFrame {
         setJbtBac(readCkBtn);
         c.add(readCkBtn);
 
+
+        //定义二维数组作为表格数据
+        Object[][] tableData =
+                {
+                        new Object[]{"李清照", 29},
+                        new Object[]{"苏格拉底", 56},
+                        new Object[]{"李白", 35},
+                        new Object[]{"弄玉", 18},
+                        new Object[]{"虎头", 2},
+                        new Object[]{"李清照", 29},
+                        new Object[]{"苏格拉底", 56},
+                        new Object[]{"李白", 35},
+                        new Object[]{"弄玉", 18},
+                        new Object[]{"虎头", 2},
+                        new Object[]{"李清照", 29},
+                        new Object[]{"苏格拉底", 56},
+                        new Object[]{"李白", 35},
+                        new Object[]{"弄玉", 18},
+                        new Object[]{"虎头", 2},
+                        new Object[]{"李清照", 29},
+                        new Object[]{"苏格拉底", 56},
+                        new Object[]{"李白", 35},
+                        new Object[]{"弄玉", 18},
+                        new Object[]{"虎头", 2},
+                        new Object[]{"李清照", 29},
+                        new Object[]{"苏格拉底", 56},
+                        new Object[]{"李白", 35},
+                        new Object[]{"弄玉", 18},
+                        new Object[]{"虎头", 2},
+                        new Object[]{"李清照", 29},
+                        new Object[]{"苏格拉底", 56},
+                        new Object[]{"李白", 35},
+                        new Object[]{"弄玉", 18},
+                        new Object[]{"虎头", 2}
+
+                };
+        //定义一维数据作为列标题
+        Object[] columnTitle = {"姓名", "年龄"};
+
+        JTable table = new JTable(tableData, columnTitle);
+        table.setRowHeight(30);
+        table.setGridColor (new Color(180, 180, 180));
+        JScrollPane jScrollPane = new JScrollPane(table);
+        jScrollPane.setBounds(10, 5, 770, 390);
+        c.add(jScrollPane);
+
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);  //Resizable:可调整大小的
         this.setTitle("东东农场工具");
@@ -81,7 +127,10 @@ public class MainPage extends JFrame {
         String[] spits = inputData.split("\n");
 
         for (int i = 0; i < spits.length; i++) {
-            ckBeanList.add(new HelpCkBean(spits[i]));
+            String ck = spits[i];
+            if(ck.length()>5){
+                ckBeanList.add(new HelpCkBean(spits[i]));
+            }
         }
         System.out.println("成功读取CK数量:" + ckBeanList.size());
         addJtaStr("成功读取CK数量:" + ckBeanList.size());
