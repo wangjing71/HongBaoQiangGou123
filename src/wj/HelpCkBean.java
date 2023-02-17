@@ -6,6 +6,16 @@ public class HelpCkBean {
     private boolean isUsed = false;
     private String tag;
 
+    private String pin;
+
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
     public String getTag() {
         return tag;
     }
@@ -17,6 +27,7 @@ public class HelpCkBean {
     public HelpCkBean(String ckStr, String state) {
         this.ckStr = ckStr;
         this.state = state;
+        this.pin = CKUtil.getCkPtPin(ckStr);
     }
 
     public HelpCkBean(String ckStr) {

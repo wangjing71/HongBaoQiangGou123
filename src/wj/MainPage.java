@@ -2,6 +2,7 @@ package wj;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
@@ -58,17 +59,24 @@ public class MainPage extends JFrame {
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
-        timer = new Timer(1000, new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                table.validate();
-                table.updateUI();
-            }
-        });
-        timer.start();
+        scrollpane.setBounds(15, 5, 755, 376);
 
-        table.setRowHeight(30);
+        table.setRowHeight(35);
         table.setGridColor(new Color(180, 180, 180));
-        scrollpane.setBounds(10, 5, 770, 390);
+        table.getTableHeader().setForeground(Color.black);
+        table.getTableHeader().setFont(new Font("正楷", 1, 14));
+        table.setFont(new Font("正楷", 1, 14));
+
+        TableColumn column1 = table.getColumnModel().getColumn(0);
+        column1.setMinWidth(50);
+        column1.setMaxWidth(50);
+        column1.setPreferredWidth(50);
+
+        TableColumn column2 = table.getColumnModel().getColumn(1);
+        column2.setMinWidth(150);
+        column2.setMaxWidth(150);
+        column2.setPreferredWidth(150);
+
         c.add(scrollpane);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -94,21 +102,31 @@ public class MainPage extends JFrame {
                 }).start();
             }
         });
+
+        timer = new Timer(300, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                table.validate();
+                table.updateUI();
+            }
+        });
+        timer.start();
     }
 
     public AbstractTableModel getTableModel() {
         return new AbstractTableModel() {
             @Override
             public String getColumnName(int column) {
-                if(column==0){
+                if (column == 0) {
+                    return "编号";
+                } else if (column == 1) {
                     return "帐号";
-                }else{
+                } else {
                     return "日志";
                 }
             }
 
             public int getColumnCount() {
-                return 2;
+                return 3;
             }
 
             public int getRowCount() {
@@ -117,7 +135,9 @@ public class MainPage extends JFrame {
 
             public Object getValueAt(int row, int col) {
                 if (col == 0) {
-                    return ckBeanList.get(row).getCkStr();
+                    return row + 1;
+                } else if (col == 1) {
+                    return ckBeanList.get(row).getPin();
                 } else {
                     return ckBeanList.get(row).getState();
                 }
@@ -139,7 +159,10 @@ public class MainPage extends JFrame {
         for (int i = 0; i < spits.length; i++) {
             String ck = spits[i];
             if (ck.length() > 5) {
-                ckBeanList.add(new HelpCkBean(spits[i]));
+                if (ckBeanList.size() >= 10) {
+                    break;
+                }
+                ckBeanList.add(new HelpCkBean(spits[i],"等待中"));
             }
         }
         System.out.println("成功读取CK数量:" + ckBeanList.size());
