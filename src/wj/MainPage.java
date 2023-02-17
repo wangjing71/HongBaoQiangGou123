@@ -1,13 +1,10 @@
 package wj;
 
-
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 
@@ -68,6 +65,7 @@ public class MainPage extends JFrame {
             }
         });
         timer.start();
+
         table.setRowHeight(30);
         table.setGridColor(new Color(180, 180, 180));
         scrollpane.setBounds(10, 5, 770, 390);
@@ -77,8 +75,8 @@ public class MainPage extends JFrame {
         this.setResizable(false);  //Resizable:可调整大小的
         this.setTitle("东东农场工具");
         this.setLayout(null);
-        WindowUtil.setWindowCenter(this);
         this.setVisible(true);
+        WindowUtil.setWindowCenter(this);
 
         addJtaStr("程序日志显示区域！");
         addJtaStr("程序当前运行目录:" + MainPage.CURRENT_PATH);
@@ -100,6 +98,15 @@ public class MainPage extends JFrame {
 
     public AbstractTableModel getTableModel() {
         return new AbstractTableModel() {
+            @Override
+            public String getColumnName(int column) {
+                if(column==0){
+                    return "帐号";
+                }else{
+                    return "日志";
+                }
+            }
+
             public int getColumnCount() {
                 return 2;
             }
