@@ -103,9 +103,11 @@ public class MainPage extends JFrame {
             public int getColumnCount() {
                 return 6;
             }
+
             public int getRowCount() {
                 return getData().size();
             }
+
             public Object getValueAt(int row, int col) {
                 switch (col) {
                     case (0): {
@@ -229,26 +231,19 @@ public class MainPage extends JFrame {
 
 
     private void timeTask(JFrame frame) {
-        ThreadPoolUtil.getInstance().execute(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        String currentTime = TimeUtil.getTime();
+        Timer timer = new Timer(200, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                try {
+                    String currentTime = TimeUtil.getTime();
 
-                        if (currentTime.contains("23:59:59")) {
-                            System.out.println("开始抢汪汪赛跑红包！");
-                        }
-                        mainPage.setTitle("汪汪赛跑抢红包" + "--【时间】" + currentTime);
-                    } catch (Exception e) {
+                    if (currentTime.contains("23:59:59")) {
+                        System.out.println("开始抢汪汪赛跑红包！");
                     }
-                    try {
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                    mainPage.setTitle("汪汪赛跑抢红包" + "--【时间】" + currentTime);
+                } catch (Exception e) {
                 }
             }
         });
+        timer.start();
     }
 }
