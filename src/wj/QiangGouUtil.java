@@ -100,6 +100,7 @@ public class QiangGouUtil {
                         getInstance().execute(new Runnable() {
                             @Override
                             public void run() {
+
                                 if ("true".equals(ckBean.getTag())) {
                                     return;
                                 }
