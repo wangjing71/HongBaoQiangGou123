@@ -95,13 +95,12 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("线程启动。。。");
+                    System.out.println("线程启动。。。"+ck);
 
                     for (int j = 0; j < 200; j++) {
                         getInstance().execute(new Runnable() {
                             @Override
                             public void run() {
-
                                 if ("true".equals(ckBean.getTag())) {
                                     return;
                                 }
@@ -122,6 +121,7 @@ public class QiangGouUtil {
                             }
                         });
                     }
+                    System.out.println("200次发送完毕"+ck);
                 }
             }).start();
         }
