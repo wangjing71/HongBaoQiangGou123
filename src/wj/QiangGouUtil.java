@@ -95,6 +95,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("线程启动。。。");
 
                     for (int j = 0; j < 200; j++) {
                         getInstance().execute(new Runnable() {
