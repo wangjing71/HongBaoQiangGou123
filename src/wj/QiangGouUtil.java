@@ -46,7 +46,7 @@ public class QiangGouUtil {
                                     JSONObject job = new JSONObject(result);
                                     String errMsg = job.optString("errMsg");
                                     ckBean.setState(errMsg);
-                                    if ("success".equals(errMsg) || errMsg.contains("已经领取过")) {
+                                    if ("success".equals(errMsg)) {
                                         ckBean.setTag("true");
                                     }
                                 } catch (Exception e) {
