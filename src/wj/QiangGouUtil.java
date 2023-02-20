@@ -26,6 +26,7 @@ public class QiangGouUtil {
 
         for (int i = 0; i < ckBeanList.size(); i++) {
             HelpCkBean ckBean = ckBeanList.get(i);
+            ckBean.setTag("false");
             String ck = ckBean.getCkStr();
             new Thread(new Runnable() {
                 @Override
