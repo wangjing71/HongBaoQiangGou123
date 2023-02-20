@@ -226,9 +226,15 @@ public class MainPage extends JFrame {
                     System.out.println(result);
                     try {
                         JSONObject job = new JSONObject(result);
-                        String prizeValue = job.optJSONObject("data").optJSONObject("runningHomeInfo").optString("prizeValue");
-                        System.out.println(prizeValue);
-                        ckBean.setMoney(prizeValue);
+                        String code = job.optString("code");
+                        if("1000".equals(code)){
+                            System.out.println("未登录");
+                            ckBean.setState("未登录");
+                        }else{
+                            String prizeValue = job.optJSONObject("data").optJSONObject("runningHomeInfo").optString("prizeValue");
+                            System.out.println(prizeValue);
+                            ckBean.setMoney(prizeValue);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
