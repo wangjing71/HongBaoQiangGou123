@@ -95,9 +95,9 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-
-                    for (int j = 0; j < 200; j++) {
-                        getInstance().execute(new Runnable() {
+                    ExecutorService pl = Executors.newFixedThreadPool(20);
+                    for (int j = 0; j < 300; j++) {
+                        pl.execute(new Runnable() {
                             @Override
                             public void run() {
                                 if ("true".equals(ckBean.getTag())) {
@@ -120,6 +120,7 @@ public class QiangGouUtil {
                             }
                         });
                     }
+                    System.out.println("300次发送完毕" + ck);
                 }
             }).start();
         }
