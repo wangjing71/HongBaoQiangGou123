@@ -37,13 +37,16 @@ public class QiangGouUtil {
                             @Override
                             public void run() {
                                 if ("true".equals(ckBean.getTag())) {
+                                    ckBean.setState("success");
                                     return;
                                 }
                                 String result = sendPost("https://api.m.jd.com/", "functionId=runningPrizeDraw&body={\"linkId\":\"L-sOanK_5RJCz7I314FpnQ\",\"type\":1,\"level\":3}&t=1676021936464&appid=activities_platform&client=android&clientVersion=4.8.2", ck);
                                 System.out.println(CKUtil.getCkPtPin(ck) + ":" + result);
                                 try {
-                                    //{"success":true,"code":7104,"errMsg":"success","data":null}
-//                                    result = "{\"success\":true,\"code\":7104,\"errMsg\":\"success\",\"data\":null}";
+                                    if ("true".equals(ckBean.getTag())) {
+                                        ckBean.setState("success");
+                                        return;
+                                    }
                                     JSONObject job = new JSONObject(result);
                                     String errMsg = job.optString("errMsg");
                                     ckBean.setState(errMsg);
