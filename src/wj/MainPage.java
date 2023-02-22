@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import static wj.QiangGouUtil.*;
 
 public class MainPage extends JFrame {
+    public static ArrayList<MoneyBean> moneys = new ArrayList<>();
     public static Gson gson = new Gson();
     public static MainPage mainPage;
     public static JTextArea logArea;
@@ -33,6 +34,17 @@ public class MainPage extends JFrame {
 
     //构造函数
     public MainPage() {
+        moneys.add(new MoneyBean("0.5元红包", "d71b23a381ada0934039d890ad22ab8d"));
+        moneys.add(new MoneyBean("3元红包", "66d9058514891de12e96588697cc3bb3"));
+        moneys.add(new MoneyBean("8元红包", "b141ddd915d20f078d69f6910b02a60a"));
+        moneys.add(new MoneyBean("50元红包", "8609ec76a8a70db9a5443376d34fa26a"));
+        moneys.add(new MoneyBean("0.3元现金", "1848d61655f979f8eac0dd36235586ba"));
+        moneys.add(new MoneyBean("1元现金", "dac84c6bf0ed0ea9da2eca4694948440"));
+        moneys.add(new MoneyBean("3元现金", "53515f286c491d66de3e01f64e3810b2"));
+        moneys.add(new MoneyBean("8元现金", "da3fc8218d2d1386d3b25242e563acb8"));
+        moneys.add(new MoneyBean("20元现金", "7ea791839f7fe3168150396e51e30917"));
+        moneys.add(new MoneyBean("100元现金", "02b48428177a44a4110034497668f808"));
+
         timeTask(this);
         mainPage = this;
 
@@ -58,11 +70,21 @@ public class MainPage extends JFrame {
         ckInputEdtScroll.setBounds(15, 400, 320, 340);
         c.add(ckInputEdtScroll);
 
-        JLabel jl = new JLabel("代理"); // 创建一个单行输入框
-        jl.setBounds(15, 350, 200, 30);
-        jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
-        jl.setForeground(Color.black);
-        c.add(jl);
+//        JLabel jl = new JLabel("代理"); // 创建一个单行输入框
+//        jl.setBounds(15, 350, 200, 30);
+//        jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
+//        jl.setForeground(Color.black);
+//        c.add(jl);
+
+        JComboBox jComboBox = new JComboBox();
+        jComboBox.setBounds(15, 350, 100, 30);
+        jComboBox.setFont(new java.awt.Font("微软雅黑", 1, 16));
+        jComboBox.addItem("1");
+        jComboBox.addItem("2");
+        jComboBox.addItem("3");
+        jComboBox.addItem("4");
+        jComboBox.addItem("5");
+        c.add(jComboBox);
 
 
         JButton readCkBtn = new JButton("读入账号");
@@ -228,10 +250,10 @@ public class MainPage extends JFrame {
                     System.out.println(result);
                     try {
                         DataBean dataBean = gson.fromJson(result, DataBean.class);
-                        if (dataBean.getCode() == 13){
+                        if (dataBean.getCode() == 13) {
                             System.out.println("未登录");
                             ckBean.setState("未登录");
-                        } else{
+                        } else {
                             System.out.println(dataBean.getData().getCanUseCoinAmount());
                             ckBean.setMoney(dataBean.getData().getCanUseCoinAmount());
                         }
