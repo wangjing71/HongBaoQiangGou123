@@ -153,7 +153,7 @@ public class MainPage extends JFrame {
                 } else if (column == 1) {
                     return "帐号";
                 } else if (column == 2) {
-                    return "金额";
+                    return "营业金";
                 } else {
                     return "日志";
                 }
