@@ -1,5 +1,6 @@
 package wj;
 
+import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import javax.swing.*;
@@ -7,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import static wj.QiangGouUtil.*;
 
 public class MainPage extends JFrame {
+    public static Gson gson = new Gson();
     public static MainPage mainPage;
     public static JTextArea logArea;
 
@@ -76,9 +79,9 @@ public class MainPage extends JFrame {
         table.getTableHeader().setFont(new Font("微软雅黑", 1, 13));
         table.setFont(new Font("微软雅黑", 1, 13));
 
-        DefaultTableCellRenderer r=new DefaultTableCellRenderer();
+        DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);
-        table.setDefaultRenderer(Object.class,r);
+        table.setDefaultRenderer(Object.class, r);
 
         TableColumn column1 = table.getColumnModel().getColumn(0);
         column1.setMinWidth(50);
@@ -217,15 +220,13 @@ public class MainPage extends JFrame {
                     String result = sendGet("https://api.m.jd.com/api?functionId=makemoneyshop_exchangequery&appid=jdlt_h5&t=1677033102811&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=41202500231991224&cthr=1&loginType=2&body=%7B%22activeId%22%3A%2263526d8f5fe613a6adb48f03%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1995857371%2C%22signStr%22%3A%22%22%7D", ck);
                     System.out.println(result);
                     try {
-                        JSONObject job = new JSONObject(result);
-                        String code = job.optString("code");
-                        if("1000".equals(code)){
+                        DataBean dataBean = gson.fromJson(result,DataBean.class);
+                        if ("13".equals(dataBean.getCode())) {
                             System.out.println("未登录");
                             ckBean.setState("未登录");
-                        }else{
-                            String prizeValue = job.optJSONObject("data").optJSONObject("runningHomeInfo").optString("prizeValue");
-                            System.out.println(prizeValue);
-                            ckBean.setMoney(prizeValue);
+                        } else {
+                            System.out.println(dataBean.getData().getCanUseCoinAmount());
+                            ckBean.setMoney(dataBean.getData().getCanUseCoinAmount());
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
