@@ -41,7 +41,7 @@ public class ProxyUtil {
         if (proxyIp == null) {
             System.out.println("代理为空 开始获取代理。");
             if (proxyList.size() == 0) {
-                getIpFromServer(proxy_url);
+                getIpFromServer();
             }
             ProxyBean.ProxyIp obj = proxyList.remove(0);
             System.out.println("proxyList:size->" + proxyList.size());
@@ -53,7 +53,7 @@ public class ProxyUtil {
         }
     }
 
-    private synchronized static void getIpFromServer(String proxyUrlq) {
+    public synchronized static void getIpFromServer() {
         if (proxyList.size() == 0) {
             if (System.currentTimeMillis() - lastGetTime < 1000) {
                 System.out.println("距离上次获取代理间隔没有超过一秒！休眠一秒后在获取！");
@@ -64,8 +64,8 @@ public class ProxyUtil {
                 }
             }
 
-            System.out.println("[类型1]正在获取代理IP,代理IP地址为:" + proxyUrlq);
-            String proxyResult = get(proxyUrlq);
+            System.out.println("[类型1]正在获取代理IP,代理IP地址为:" + proxy_url);
+            String proxyResult = get(proxy_url);
             System.out.println(proxyResult);
             lastGetTime = System.currentTimeMillis();
             try {

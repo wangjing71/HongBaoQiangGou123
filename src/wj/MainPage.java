@@ -186,7 +186,7 @@ public class MainPage extends JFrame {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        ProxyUtil.getProxyIp();
+                        ProxyUtil.getIpFromServer();
                     }
                 }).start();
             }
