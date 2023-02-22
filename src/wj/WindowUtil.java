@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class WindowUtil {
     public static void setWindowCenter(JFrame jFrame) {
-        int windowWidth = 800;
-        int windowHeight = 800;
+        int windowWidth = 650;
+        int windowHeight = 650;
 
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
