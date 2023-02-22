@@ -69,7 +69,7 @@ public class MainPage extends JFrame {
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
-        scrollpane.setBounds(15, 5, 605, 226);
+        scrollpane.setBounds(15, 5, 755, 376);
 
         table.setRowHeight(35);
         table.setGridColor(new Color(180, 180, 180));
@@ -82,19 +82,19 @@ public class MainPage extends JFrame {
         table.setDefaultRenderer(Object.class,r);
 
         TableColumn column1 = table.getColumnModel().getColumn(0);
-        column1.setMinWidth(40);
-        column1.setMaxWidth(40);
-        column1.setPreferredWidth(40);
+        column1.setMinWidth(50);
+        column1.setMaxWidth(50);
+        column1.setPreferredWidth(50);
 
         TableColumn column2 = table.getColumnModel().getColumn(1);
-        column2.setMinWidth(130);
-        column2.setMaxWidth(130);
-        column2.setPreferredWidth(130);
+        column2.setMinWidth(150);
+        column2.setMaxWidth(150);
+        column2.setPreferredWidth(150);
 
         TableColumn column3 = table.getColumnModel().getColumn(2);
-        column3.setMinWidth(40);
-        column3.setMaxWidth(40);
-        column3.setPreferredWidth(40);
+        column3.setMinWidth(50);
+        column3.setMaxWidth(50);
+        column3.setPreferredWidth(50);
 
         c.add(scrollpane);
 
@@ -314,4 +314,5 @@ public class MainPage extends JFrame {
         });
         timer.start();
     }
+
 }
