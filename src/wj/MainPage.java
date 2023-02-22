@@ -52,7 +52,7 @@ public class MainPage extends JFrame {
         Container c = getContentPane();
 
         logArea = new JTextArea(15, 35);
-        logArea.setFont(new Font("微软雅黑", 0, 12));
+        logArea.setFont(new Font("微软雅黑", 0, 14));
         logArea.setEditable(false);
         logArea.setWrapStyleWord(false); //换行方式：不分割单词
         logArea.setLineWrap(true); //自动换行
@@ -63,9 +63,10 @@ public class MainPage extends JFrame {
         c.add(logScroll);
 
         ckInputEdt = new JTextArea(15, 35);
-        ckInputEdt.setFont(new Font("正楷", 1, 12));
+        ckInputEdt.setFont(new Font("微软雅黑", 0, 14));
         ckInputEdt.setWrapStyleWord(false); //换行方式：不分割单词
         ckInputEdt.setLineWrap(true); //自动换行
+        ckInputEdt.setForeground(Color.black);
         //给JTextArea添加垂直滚动条
         JScrollPane ckInputEdtScroll = new JScrollPane(ckInputEdt, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ckInputEdtScroll.setBounds(15, 400, 320, 340);
@@ -113,7 +114,7 @@ public class MainPage extends JFrame {
         table.setGridColor(new Color(180, 180, 180));
         table.getTableHeader().setForeground(Color.black);
         table.getTableHeader().setFont(new Font("微软雅黑", 0, 12));
-        table.setFont(new Font("微软雅黑", 0, 12));
+        table.setFont(new Font("微软雅黑", 0, 13));
 
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);

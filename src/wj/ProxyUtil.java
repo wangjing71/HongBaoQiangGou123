@@ -16,7 +16,7 @@ import java.util.HashMap;
  * 标准代理工具类
  * */
 public class ProxyUtil {
-    public static String proxy_url = "";
+    public static String proxy_url = "http://route.xiongmaodaili.com/xiongmao-web/api/glip?secret=c661c6554a4b16265b372e1185e424f3&orderNo=GL202212031719379wpxM84C&count=5&isTxt=0&proxyType=1";
     public static ArrayList<ProxyBean.ProxyIp> proxyList = new ArrayList<>();
     public static Gson gson = new Gson();
     public static HashMap<String, ProxyBean.ProxyIp> ProxyIpMapList = new HashMap<>();
