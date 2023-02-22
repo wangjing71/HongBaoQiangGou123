@@ -179,6 +179,19 @@ public class MainPage extends JFrame {
             }
         });
 
+        getProxy.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                addJtaStr("开始获取代理！");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ProxyUtil.getProxyIp();
+                    }
+                }).start();
+            }
+        });
+
         jComboBox.addActionListener(new ActionListener() {
 
             @Override
@@ -370,7 +383,6 @@ public class MainPage extends JFrame {
     public static void main(String[] args) {
         new MainPage();
     }
-
 
 
     private void timeTask(JFrame frame) {
