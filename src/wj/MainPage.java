@@ -78,13 +78,13 @@ public class MainPage extends JFrame {
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
-        scrollpane.setBounds(15, 5, 755, 335);
+        scrollpane.setBounds(15, 5, 755, 334);
 
         table.setRowHeight(31);
         table.setGridColor(new Color(180, 180, 180));
         table.getTableHeader().setForeground(Color.black);
-        table.getTableHeader().setFont(new Font("微软雅黑", 1, 13));
-        table.setFont(new Font("微软雅黑", 1, 13));
+        table.getTableHeader().setFont(new Font("微软雅黑", 1, 12));
+        table.setFont(new Font("微软雅黑", 1, 12));
 
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);
