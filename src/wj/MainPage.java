@@ -83,29 +83,15 @@ public class MainPage extends JFrame {
         JTextField textField = new JTextField("HttpIp代理地址"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
-        textField.setBounds(183, 350, 500, 30);
+        textField.setBounds(183, 350, 480, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
         setTipsInfo(textField, "HttpIp代理地址");
 
-        Document doc = textField.getDocument();
-        doc.addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                System.out.println("1");
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                System.out.println("2");
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                System.out.println("3");
-            }
-        });
-
+        JButton updateConfig = new JButton("更新配置");
+        updateConfig.setBounds(675, 350, 100, 30);
+        setJbtBac(updateConfig);
+        c.add(updateConfig);
 
         JComboBox jComboBox = new JComboBox();
         jComboBox.setBounds(15, 350, 100, 30);
