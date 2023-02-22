@@ -23,14 +23,14 @@ public class ProxyUtil {
     public static long lastGetTime;
 
     public static HttpURLConnection getHttpURLConnectionProxy(String url) throws IOException {
-        if (url == null || url.length() == 0) {
-            URL realUrl = new URL(url);
-            return (HttpURLConnection) realUrl.openConnection();
-        }
         URL realUrl = new URL(url);
         ProxyBean.ProxyIp obj = ProxyUtil.getProxyIp();
-        Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(obj.getIp().trim(), Integer.parseInt(obj.getPort().trim())));
-        return (HttpURLConnection) realUrl.openConnection(proxy);
+        if (obj == null) {
+            return getHttpURLConnection(url);
+        } else {
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(obj.getIp().trim(), Integer.parseInt(obj.getPort().trim())));
+            return (HttpURLConnection) realUrl.openConnection(proxy);
+        }
     }
 
     public static HttpURLConnection getHttpURLConnection(String url) throws IOException {
@@ -46,11 +46,16 @@ public class ProxyUtil {
             if (proxyList.size() == 0) {
                 getIpFromServer();
             }
-            ProxyBean.ProxyIp obj = proxyList.remove(0);
-            System.out.println("proxyList:size->" + proxyList.size());
-            System.out.println("代理IP:" + obj.getIp() + ":" + obj.getPort());
-            ProxyIpMapList.put(threadName, obj);
-            return obj;
+            try {
+                ProxyBean.ProxyIp obj = proxyList.remove(0);
+                System.out.println("proxyList:size->" + proxyList.size());
+                System.out.println("代理IP:" + obj.getIp() + ":" + obj.getPort());
+                ProxyIpMapList.put(threadName, obj);
+                return obj;
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            return null;
         } else {
             return proxyIp;
         }
@@ -111,7 +116,7 @@ public class ProxyUtil {
                 result += line;
             }
         } catch (Exception e) {
-            System.out.println(url + "发送GET请求出现异常！" + e);
+            System.out.println(url + "发送GET请求出现异常1！" + e);
             e.printStackTrace();
         }
         // 使用finally块来关闭输入流

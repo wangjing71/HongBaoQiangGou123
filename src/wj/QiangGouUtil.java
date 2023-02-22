@@ -40,10 +40,11 @@ public class QiangGouUtil {
                                     ckBean.setState("success");
                                     return;
                                 }
+                                System.out.println(moneys.get(selIndex).getId());
                                 String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}"
                                                 .replaceAll("1677031591387", System.currentTimeMillis() + "")
-                                                .replaceAll("83161358157305", RandomUtils.getRandomPassword(14))
-                                                .replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()),
+//                                        .replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId())
+                                        .replaceAll("83161358157305", RandomUtils.getRandomPassword(14)),
                                         ck);
                                 System.out.println(result);
                                 if (result.length() == 0) {
@@ -96,7 +97,7 @@ public class QiangGouUtil {
                 return "403EXE";
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            System.out.println("发送GET请求出现异常2！" + e);
         } finally {
             try {
                 if (in != null) {
@@ -136,7 +137,8 @@ public class QiangGouUtil {
                 return "403EXE";
             }
         } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
+            e.printStackTrace();
+            System.out.println("发送GET请求出现异常3！" + e);
         } finally {
             try {
                 if (in != null) {
