@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import static wj.QiangGouUtil.*;
 
 public class MainPage extends JFrame {
+    public static int selIndex = 0;
     public static ArrayList<MoneyBean> moneys = new ArrayList<>();
     public static Gson gson = new Gson();
     public static MainPage mainPage;
@@ -75,6 +76,14 @@ public class MainPage extends JFrame {
         jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
         jl.setForeground(Color.black);
         c.add(jl);
+
+        JTextField textField = new JTextField("HttpIp代理地址"); // 创建一个单行输入框
+        textField.setEditable(true); // 设置输入框允许编辑
+        textField.setColumns(11); // 设置输入框的长度为11个字符
+        textField.setBounds(75, 110, 830, 30);
+        textField.setForeground(Color.gray);
+        c.add(textField);
+        setTipsInfo(textField, "HttpIp代理地址");
 
         JComboBox jComboBox = new JComboBox();
         jComboBox.setBounds(15, 350, 100, 30);
@@ -168,6 +177,8 @@ public class MainPage extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                selIndex = jComboBox.getSelectedIndex();
+                MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
                 System.out.println(jComboBox.getSelectedIndex() + "");
             }
         });
@@ -330,9 +341,30 @@ public class MainPage extends JFrame {
         });
     }
 
+    public static void setTipsInfo(JTextField textField2, String tips) {
+        textField2.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (textField2.getText().equals(tips)) {
+                    textField2.setText("");     //将提示文字清空
+                    textField2.setForeground(Color.black);  //设置用户输入的字体颜色为黑色
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (textField2.getText().equals("")) {
+                    textField2.setForeground(Color.gray); //将提示文字设置为灰色
+                    textField2.setText(tips);     //显示提示文字
+                }
+            }
+        });
+    }
+
     public static void main(String[] args) {
         new MainPage();
     }
+
 
 
     private void timeTask(JFrame frame) {
