@@ -58,6 +58,13 @@ public class MainPage extends JFrame {
         ckInputEdtScroll.setBounds(15, 400, 320, 340);
         c.add(ckInputEdtScroll);
 
+        JLabel jl = new JLabel("代理"); // 创建一个单行输入框
+        jl.setBounds(40, 110, 200, 30);
+        jl.setFont(new java.awt.Font("微软雅黑", 1, 16));
+        jl.setForeground(Color.black);
+        c.add(jl);
+
+
         JButton readCkBtn = new JButton("读入账号");
         readCkBtn.setBounds(340, 400, 105, 60);
         setJbtBac(readCkBtn);
