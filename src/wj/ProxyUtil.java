@@ -16,6 +16,7 @@ import java.util.HashMap;
  * 标准代理工具类
  * */
 public class ProxyUtil {
+    public static String proxy_url = "";
     public static ArrayList<ProxyBean.ProxyIp> proxyList = new ArrayList<>();
     public static Gson gson = new Gson();
     public static HashMap<String, ProxyBean.ProxyIp> ProxyIpMapList = new HashMap<>();
@@ -40,7 +41,7 @@ public class ProxyUtil {
         if (proxyIp == null) {
             System.out.println("代理为空 开始获取代理。");
             if (proxyList.size() == 0) {
-                getIpFromServer(Constant.proxyUrlJinLi);
+                getIpFromServer(proxy_url);
             }
             ProxyBean.ProxyIp obj = proxyList.remove(0);
             System.out.println("proxyList:size->" + proxyList.size());
