@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import static wj.QiangGouUtil.*;
 
-
 public class MainPage extends JFrame {
     public static MainPage mainPage;
     public static JTextArea logArea;
