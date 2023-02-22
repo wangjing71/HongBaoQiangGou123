@@ -1,14 +1,16 @@
 package wj;
 
 import com.google.gson.Gson;
-import org.json.JSONObject;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
-import javax.xml.crypto.Data;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -85,6 +87,25 @@ public class MainPage extends JFrame {
         textField.setForeground(Color.gray);
         c.add(textField);
         setTipsInfo(textField, "HttpIp代理地址");
+
+        Document doc = textField.getDocument();
+        doc.addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                System.out.println("1");
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                System.out.println("2");
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                System.out.println("3");
+            }
+        });
+
 
         JComboBox jComboBox = new JComboBox();
         jComboBox.setBounds(15, 350, 100, 30);
