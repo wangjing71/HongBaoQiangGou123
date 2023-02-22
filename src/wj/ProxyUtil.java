@@ -76,6 +76,8 @@ public class ProxyUtil {
                 e.printStackTrace();
                 System.out.println("获取代理发生异常");
             }
+        } else {
+            System.out.println("[类型1]代理池不为空,跳过获取代理！");
         }
     }
 

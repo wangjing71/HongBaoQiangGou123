@@ -203,7 +203,7 @@ public class MainPage extends JFrame {
         updateConfig.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                addJtaStr("开始获取代理！");
+                addJtaStr("更新配置！");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
