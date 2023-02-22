@@ -23,6 +23,10 @@ public class ProxyUtil {
     public static long lastGetTime;
 
     public static HttpURLConnection getHttpURLConnectionProxy(String url) throws IOException {
+        if (url == null || url.length() == 0) {
+            URL realUrl = new URL(url);
+            return (HttpURLConnection) realUrl.openConnection();
+        }
         URL realUrl = new URL(url);
         ProxyBean.ProxyIp obj = ProxyUtil.getProxyIp();
         Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(obj.getIp().trim(), Integer.parseInt(obj.getPort().trim())));
@@ -53,6 +57,10 @@ public class ProxyUtil {
     }
 
     public synchronized static void getIpFromServer() {
+        if (MainPage.configBean.getProxyUrl() == null || MainPage.configBean.getProxyUrl().length() == 0 || MainPage.configBean.getProxyUrl().equals("HttpIp代理地址")) {
+            System.out.println("http代理地址未填写！");
+            return;
+        }
         if (proxyList.size() == 0) {
             if (System.currentTimeMillis() - lastGetTime < 1000) {
                 System.out.println("距离上次获取代理间隔没有超过一秒！休眠一秒后在获取！");
