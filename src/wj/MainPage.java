@@ -105,7 +105,8 @@ public class MainPage extends JFrame {
         WindowUtil.setWindowCenter(this);
 
         addJtaStr("程序日志显示区域！");
-        addJtaStr("程序当前运行目录:" + MainPage.CURRENT_PATH);
+//        addJtaStr("程序当前运行目录:" + MainPage.CURRENT_PATH);
+        addJtaStr("抢购模式:单帐号20线程");
         addJtaStr("请在左边输入账号！");
 
         readCkBtn.addMouseListener(new MouseAdapter() {

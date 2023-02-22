@@ -52,6 +52,7 @@ public class QiangGouUtil {
                                     ckBean.setState(errMsg);
                                     if ("success".equals(errMsg)) {
                                         ckBean.setTag("true");
+                                        MainPage.addJtaStr(CKUtil.getCkPtPin(ck) + "-" + "已抢到");
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -84,8 +85,7 @@ public class QiangGouUtil {
             connection.setConnectTimeout(10000);
             connection.connect();
             if (connection.getResponseCode() == 200) {
-                in = new BufferedReader(new InputStreamReader(
-                        connection.getInputStream()));
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String line;
                 while ((line = in.readLine()) != null) {
                     result.append(line);
@@ -132,8 +132,7 @@ public class QiangGouUtil {
             // flush输出流的缓冲
             osw.flush();
             // 定义BufferedReader输入流来读取URL的响应
-            in = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream(), "utf-8"));
+            in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
             String line;
             while ((line = in.readLine()) != null) {
                 result.append(line);
