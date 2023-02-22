@@ -119,7 +119,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "*/*");
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://wqs.jd.com");
-            connection.setRequestProperty("User-Agent"," jdapp;android;11.6.0;;;appBuild/98666;ef/1;ep/%7B%22hdid%22%3A%22JM9F1ywUPwflvMIpYPok0tt5k9kW4ArJEU3lfLhxBqw%3D%22%2C%22ts%22%3A1675845353224%2C%22ridx%22%3A-1%2C%22cipher%22%3A%7B%22sv%22%3A%22CJK%3D%22%2C%22ad%22%3A%22CtvwDzLtDtvuCNVwZQUnEG%3D%3D%22%2C%22od%22%3A%22CJrvYzCnDQSjZNuyCy00CzvrBWS4ZJGjZNq4DQOmEQC4YJvs%22%2C%22ov%22%3A%22Ctu%3D%22%2C%22ud%22%3A%22CtvwDzLtDtvuCNVwZQUnEG%3D%3D%22%7D%2C%22ciphertype%22%3A5%2C%22version%22%3A%221.2.0%22%2C%22appname%22%3A%22com.jingdong.app.mall%22%7D;jdSupportDarkMode/0;Mozilla/5.0 (Linux; Android 10; TAS-AN00 Build/HUAWEITAS-AN00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.72 MQQBrowser/6.2 TBS/046141 Mobile Safari/537.36");
+            connection.setRequestProperty("User-Agent",UserAgentUtil.randomUserAgent());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -253,5 +253,11 @@ public class QiangGouUtil {
             }
         }
         return pools;
+    }
+
+    public static void main(String[] args) {
+        String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677036133395&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=48320131048590&cthr=1&loginType=2&h5st=&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22da3fc8218d2d1386d3b25242e563acb8%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1998887953%2C%22signStr%22%3A%2239f0aa915f7e254f4bae49be4f2af4cd%22%7D",
+                "pt_key=app_openAAJj9UsVADCc57cQk6ENcE0kx1PiM-WIMf3GY-TT1yPZtljK0JWUklEoYHxplWeFksZTzUcLO-k;pt_pin=wj1029821170;");
+        System.out.println(result);
     }
 }
