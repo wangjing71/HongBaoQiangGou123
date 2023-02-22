@@ -112,9 +112,7 @@ public class QiangGouUtil {
         StringBuilder result = new StringBuilder();
         BufferedReader in = null;
         try {
-            URL realUrl = new URL(url);
-
-            HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
+            HttpURLConnection connection =ProxyUtil.getHttpURLConnectionProxy(url);
 
             // 设置通用的请求属性
             connection.setRequestProperty("Host", "api.m.jd.com");
