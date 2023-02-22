@@ -308,7 +308,7 @@ public class MainPage extends JFrame {
                     if (currentTime.contains("23:59:59")) {
                         qiangHongbaoTask();
                     }
-                    mainPage.setTitle("汪汪赛跑抢红包" + "--【时间】" + currentTime);
+                    mainPage.setTitle("大赢家抢红包" + "--【时间】" + currentTime);
                 } catch (Exception e) {
                 }
             }

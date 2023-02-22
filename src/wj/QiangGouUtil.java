@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -31,7 +33,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(20);
+                    ExecutorService pl = Executors.newFixedThreadPool(1);
                     for (int j = 0; j < 300; j++) {
                         pl.execute(new Runnable() {
                             @Override
@@ -40,20 +42,11 @@ public class QiangGouUtil {
                                     ckBean.setState("success");
                                     return;
                                 }
-                                String result = sendPost("https://api.m.jd.com/", "functionId=runningPrizeDraw&body={\"linkId\":\"L-sOanK_5RJCz7I314FpnQ\",\"type\":1,\"level\":3}&t=1676021936464&appid=activities_platform&client=android&clientVersion=4.8.2", ck);
-                                System.out.println(CKUtil.getCkPtPin(ck) + ":" + result);
+                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22da3fc8218d2d1386d3b25242e563acb8%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1994345945%2C%22signStr%22%3A%2212ff2fa38d51f26a09eb4fa4f6ac2805%22%7D", ck);
                                 try {
-                                    if ("true".equals(ckBean.getTag())) {
-                                        ckBean.setState("success");
-                                        return;
-                                    }
                                     JSONObject job = new JSONObject(result);
-                                    String errMsg = job.optString("errMsg");
-                                    ckBean.setState(errMsg);
-                                    if ("success".equals(errMsg)) {
-                                        ckBean.setTag("true");
-                                        MainPage.addJtaStr(CKUtil.getCkPtPin(ck) + "-" + "已抢到");
-                                    }
+                                    String errMsg = job.optString("msg");
+                                    System.out.println(CKUtil.getCkPtPin(ck) + ":" + errMsg);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -155,6 +148,51 @@ public class QiangGouUtil {
             }
         }
         return result.toString();
+    }
+
+    public static String sendGetHelp(String url, String ck) {
+        String result = "";
+        BufferedReader in = null;
+        try {
+            URL realUrl = new URL(url);
+
+            HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
+
+            // 设置通用的请求属性
+            connection.setRequestProperty("Host", "api.m.jd.com");
+            connection.setRequestProperty("Accept", "application/json, text/plain, */*");
+            connection.setRequestProperty("origin", "https://bnzf.jd.com");
+            connection.setRequestProperty("referer", "https://pushgold.jd.com/");
+            connection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0");
+            connection.setRequestProperty("Cookie", ck);
+            connection.setReadTimeout(10000);
+            connection.setConnectTimeout(10000);
+            connection.connect();
+            if (connection.getResponseCode() == 200) {
+                in = new BufferedReader(new InputStreamReader(
+                        connection.getInputStream()));
+                String line;
+                while ((line = in.readLine()) != null) {
+                    result += line;
+                }
+            } else if (connection.getResponseCode() == 403) {
+                return "403EXE";
+            }
+        } catch (Exception e) {
+            System.out.println("发送GET请求出现异常！" + e);
+//            e.printStackTrace();
+        }
+        // 使用finally块来关闭输入流
+        finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return result;
     }
 
     private static ExecutorService pools = null;
