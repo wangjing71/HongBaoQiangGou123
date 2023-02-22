@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -55,7 +53,6 @@ public class QiangGouUtil {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
                                         System.out.println(CKUtil.getCkPtPin(ck) + ":" + errMsg);
-
                                         ckBean.setState(errMsg);
                                     } catch (Exception e) {
                                         e.printStackTrace();

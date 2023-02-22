@@ -71,9 +71,9 @@ public class MainPage extends JFrame {
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
-        scrollpane.setBounds(15, 5, 755, 376);
+        scrollpane.setBounds(15, 5, 755, 335);
 
-        table.setRowHeight(35);
+        table.setRowHeight(31);
         table.setGridColor(new Color(180, 180, 180));
         table.getTableHeader().setForeground(Color.black);
         table.getTableHeader().setFont(new Font("微软雅黑", 1, 13));
