@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import static wj.QiangGouUtil.*;
 
 public class MainPage extends JFrame {
+    public static ConfigBean configBean = new ConfigBean();
     public static int selIndex = 0;
     public static ArrayList<MoneyBean> moneys = new ArrayList<>();
     public static Gson gson = new Gson();
@@ -199,6 +200,20 @@ public class MainPage extends JFrame {
             }
         });
 
+        updateConfig.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                addJtaStr("开始获取代理！");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        configBean.setProxyUrl(textField.getText());
+                        updateConfig();
+                    }
+                }).start();
+            }
+        });
+
         jComboBox.addActionListener(new ActionListener() {
 
             @Override
@@ -217,6 +232,25 @@ public class MainPage extends JFrame {
             }
         });
         timer.start();
+
+
+        String configData = FileUtil.readJsonFile(MainPage.CURRENT_PATH + "/config.json");
+        try {
+            configBean = gson.fromJson(configData, ConfigBean.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (configBean == null) {
+            configBean = new ConfigBean();
+        } else {
+            textField.setText(configBean.getProxyUrl());
+        }
+    }
+
+
+    public static void updateConfig() {
+        MainPage.addJtaStr("更新配置文件:" + MainPage.CURRENT_PATH + "/config.json");
+        FileUtil.reWriteFile(MainPage.CURRENT_PATH + "/config.json", gson.toJson(configBean));
     }
 
     public AbstractTableModel getTableModel() {
