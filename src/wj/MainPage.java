@@ -314,5 +314,4 @@ public class MainPage extends JFrame {
         });
         timer.start();
     }
-
 }
