@@ -49,7 +49,9 @@ public class QiangGouUtil {
                                 }
                                 if (result.contains("success")) {
                                     ckBean.setTag("true");
+                                    ckBean.setState("success");
                                     FileUtil.appendKeyToFile(MainPage.CURRENT_PATH + "/result.txt", CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
+                                    return;
                                 }
                                 if (result.length() == 0) {
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "返回空数据");
