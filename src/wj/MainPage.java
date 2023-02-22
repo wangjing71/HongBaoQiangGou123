@@ -39,7 +39,7 @@ public class MainPage extends JFrame {
         Container c = getContentPane();
 
         logArea = new JTextArea(15, 35);
-        logArea.setFont(new Font("微软雅黑", 1, 13));
+        logArea.setFont(new Font("微软雅黑", 1, 12));
         logArea.setEditable(false);
         logArea.setWrapStyleWord(false); //换行方式：不分割单词
         logArea.setLineWrap(true); //自动换行
@@ -50,7 +50,7 @@ public class MainPage extends JFrame {
         c.add(logScroll);
 
         ckInputEdt = new JTextArea(15, 35);
-        ckInputEdt.setFont(new Font("正楷", 1, 15));
+        ckInputEdt.setFont(new Font("正楷", 1, 12));
         ckInputEdt.setWrapStyleWord(false); //换行方式：不分割单词
         ckInputEdt.setLineWrap(true); //自动换行
         //给JTextArea添加垂直滚动条
@@ -59,8 +59,8 @@ public class MainPage extends JFrame {
         c.add(ckInputEdtScroll);
 
         JLabel jl = new JLabel("代理"); // 创建一个单行输入框
-        jl.setBounds(40, 110, 200, 30);
-        jl.setFont(new java.awt.Font("微软雅黑", 1, 16));
+        jl.setBounds(15, 350, 200, 30);
+        jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
         jl.setForeground(Color.black);
         c.add(jl);
 
