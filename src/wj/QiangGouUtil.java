@@ -20,7 +20,7 @@ public class QiangGouUtil {
         if (ClickUtil.isFastClick()) {
             return;
         }
-        System.out.println("开始抢汪汪赛跑红包！");
+        System.out.println("开始抢大赢家红包！");
         if (ckBeanList == null || ckBeanList.size() == 0) {
             System.out.println("ck为空 停止！");
             return;
