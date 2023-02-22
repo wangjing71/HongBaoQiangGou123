@@ -166,6 +166,15 @@ public class MainPage extends JFrame {
             }
         });
 
+        jComboBox.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(jComboBox.getSelectedIndex() + "");
+            }
+        });
+
+
         timer = new Timer(300, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 table.validate();
