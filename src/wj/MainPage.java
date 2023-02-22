@@ -37,7 +37,7 @@ public class MainPage extends JFrame {
         Container c = getContentPane();
 
         logArea = new JTextArea(15, 35);
-        logArea.setFont(new Font("正楷", 1, 13));
+        logArea.setFont(new Font("微软雅黑", 1, 13));
         logArea.setEditable(false);
         logArea.setWrapStyleWord(false); //换行方式：不分割单词
         logArea.setLineWrap(true); //自动换行
@@ -69,13 +69,13 @@ public class MainPage extends JFrame {
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
-        scrollpane.setBounds(15, 5, 755, 376);
+        scrollpane.setBounds(15, 5, 755, 350);
 
         table.setRowHeight(35);
         table.setGridColor(new Color(180, 180, 180));
         table.getTableHeader().setForeground(Color.black);
-        table.getTableHeader().setFont(new Font("正楷", 1, 14));
-        table.setFont(new Font("正楷", 1, 14));
+        table.getTableHeader().setFont(new Font("微软雅黑", 1, 13));
+        table.setFont(new Font("微软雅黑", 1, 13));
 
         DefaultTableCellRenderer r=new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);
@@ -237,7 +237,7 @@ public class MainPage extends JFrame {
 
     private void setJbtBac(JButton jbt) {
         jbt.setFocusPainted(false);
-        jbt.setFont(new Font("正楷", 1, 16));
+        jbt.setFont(new Font("微软雅黑", 1, 16));
         jbt.setBackground(new Color(51, 144, 232));
         jbt.setForeground(Color.white);
         jbt.setBorderPainted(false);
