@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import static wj.QiangGouUtil.*;
 
 public class MainPage extends JFrame {
+
+    public static void main(String[] args) {
+        new MainPage();
+    }
+
+
     public static ConfigBean configBean = new ConfigBean();
     public static int selIndex = 0;
     public static ArrayList<MoneyBean> moneys = new ArrayList<>();
@@ -415,10 +421,6 @@ public class MainPage extends JFrame {
                 }
             }
         });
-    }
-
-    public static void main(String[] args) {
-        new MainPage();
     }
 
 
