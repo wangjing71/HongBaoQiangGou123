@@ -69,7 +69,7 @@ public class MainPage extends JFrame {
         dataModel = getTableModel();
         table = new JTable(dataModel);
         scrollpane = new JScrollPane(table);
-        scrollpane.setBounds(15, 5, 755, 350);
+        scrollpane.setBounds(15, 5, 755, 376);
 
         table.setRowHeight(35);
         table.setGridColor(new Color(180, 180, 180));
