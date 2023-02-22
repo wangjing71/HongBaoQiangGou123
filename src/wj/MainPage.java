@@ -81,7 +81,7 @@ public class MainPage extends JFrame {
         JTextField textField = new JTextField("HttpIp代理地址"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
-        textField.setBounds(75, 110, 830, 30);
+        textField.setBounds(183, 350, 500, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
         setTipsInfo(textField, "HttpIp代理地址");
@@ -100,8 +100,13 @@ public class MainPage extends JFrame {
         setJbtBac(readCkBtn);
         c.add(readCkBtn);
 
+        JButton getProxy = new JButton("取代理");
+        getProxy.setBounds(340, 480, 105, 60);
+        setJbtBac(getProxy);
+        c.add(getProxy);
+
         JButton ceshi = new JButton("测试");
-        ceshi.setBounds(340, 480, 105, 60);
+        ceshi.setBounds(340, 560, 105, 60);
         setJbtBac(ceshi);
         c.add(ceshi);
 
