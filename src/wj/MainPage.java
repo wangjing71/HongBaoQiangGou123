@@ -52,7 +52,7 @@ public class MainPage extends JFrame {
         Container c = getContentPane();
 
         logArea = new JTextArea(15, 35);
-        logArea.setFont(new Font("微软雅黑", 1, 12));
+        logArea.setFont(new Font("微软雅黑", 0, 12));
         logArea.setEditable(false);
         logArea.setWrapStyleWord(false); //换行方式：不分割单词
         logArea.setLineWrap(true); //自动换行
@@ -73,7 +73,7 @@ public class MainPage extends JFrame {
 
         JLabel jl = new JLabel("代理"); // 创建一个单行输入框
         jl.setBounds(150, 350, 200, 30);
-        jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
+        jl.setFont(new java.awt.Font("微软雅黑", 0, 15));
         jl.setForeground(Color.black);
         c.add(jl);
 
@@ -87,7 +87,7 @@ public class MainPage extends JFrame {
 
         JComboBox jComboBox = new JComboBox();
         jComboBox.setBounds(15, 350, 100, 30);
-        jComboBox.setFont(new java.awt.Font("微软雅黑", 1, 13));
+        jComboBox.setFont(new java.awt.Font("微软雅黑", 0, 13));
 
         for (int i = 0; i < moneys.size(); i++) {
             jComboBox.addItem(moneys.get(i).getTitle());
@@ -112,8 +112,8 @@ public class MainPage extends JFrame {
         table.setRowHeight(31);
         table.setGridColor(new Color(180, 180, 180));
         table.getTableHeader().setForeground(Color.black);
-        table.getTableHeader().setFont(new Font("微软雅黑", 1, 12));
-        table.setFont(new Font("微软雅黑", 1, 12));
+        table.getTableHeader().setFont(new Font("微软雅黑", 0, 12));
+        table.setFont(new Font("微软雅黑", 0, 12));
 
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);
@@ -285,7 +285,7 @@ public class MainPage extends JFrame {
 
     private void setJbtBac(JButton jbt) {
         jbt.setFocusPainted(false);
-        jbt.setFont(new Font("微软雅黑", 1, 16));
+        jbt.setFont(new Font("微软雅黑", 0, 16));
         jbt.setBackground(new Color(51, 144, 232));
         jbt.setForeground(Color.white);
         jbt.setBorderPainted(false);
