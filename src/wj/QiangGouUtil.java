@@ -43,6 +43,7 @@ public class QiangGouUtil {
                                     return;
                                 }
                                 String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22da3fc8218d2d1386d3b25242e563acb8%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1994345945%2C%22signStr%22%3A%2212ff2fa38d51f26a09eb4fa4f6ac2805%22%7D", ck);
+                                System.out.println(result);
                                 if(result.length()==0){
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "返回空数据");
                                 }else{
@@ -63,7 +64,7 @@ public class QiangGouUtil {
         }
     }
 
-    public static String sendGet(String url, String ck) {
+    public static String getScore(String url, String ck) {
         StringBuilder result = new StringBuilder();
         BufferedReader in = null;
         try {
@@ -76,7 +77,49 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("origin", "https://bnzf.jd.com");
             connection.setRequestProperty("referer", "https://pushgold.jd.com/");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            connection.setRequestProperty("User-Agent","Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)");
+            connection.setRequestProperty("Cookie", ck);
+            connection.setReadTimeout(10000);
+            connection.setConnectTimeout(10000);
+            connection.connect();
+            if (connection.getResponseCode() == 200) {
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line;
+                while ((line = in.readLine()) != null) {
+                    result.append(line);
+                }
+            } else if (connection.getResponseCode() == 403) {
+                return "403EXE";
+            }
+        } catch (Exception e) {
+            System.out.println("发送GET请求出现异常！" + e);
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return result.toString();
+    }
+
+    public static String sendGet(String url, String ck) {
+        StringBuilder result = new StringBuilder();
+        BufferedReader in = null;
+        try {
+            URL realUrl = new URL(url);
+
+            HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
+
+            // 设置通用的请求属性
+            connection.setRequestProperty("Host", "api.m.jd.com");
+            connection.setRequestProperty("Connection", "Keep-Alive");
+            connection.setRequestProperty("Accept", "*/*");
+            connection.setRequestProperty("Accept-Language", "zh-cn");
+            connection.setRequestProperty("Referer", "https://wqs.jd.com");
+            connection.setRequestProperty("User-Agent","jdapp;android;10.5.4;;;Mozilla/5.0 (Linux; Android 10; MI 9 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 MQQBrowser/6.2 TBS/045227 Mobile Safari/537.36");
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
