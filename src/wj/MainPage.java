@@ -188,7 +188,7 @@ public class MainPage extends JFrame {
         String inputData = ckInputEdt.getText();
         System.out.println(inputData);
         String[] spits = inputData.split("\n");
-        if (ckBeanList.size() >= 20) {
+        if (ckBeanList.size() >= 200) {
             System.out.println("最多20个ck！");
             addJtaStr("最多10个ck！");
             return;
@@ -197,7 +197,7 @@ public class MainPage extends JFrame {
         for (int i = 0; i < spits.length; i++) {
             String ck = spits[i];
             if (ck.length() > 5) {
-                if (ckBeanList.size() >= 20) {
+                if (ckBeanList.size() >= 200) {
                     break;
                 }
                 ckBeanList.add(new HelpCkBean(spits[i], "等待中"));
