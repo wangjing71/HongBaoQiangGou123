@@ -70,22 +70,20 @@ public class MainPage extends JFrame {
         ckInputEdtScroll.setBounds(15, 400, 320, 340);
         c.add(ckInputEdtScroll);
 
-//        JLabel jl = new JLabel("代理"); // 创建一个单行输入框
-//        jl.setBounds(15, 350, 200, 30);
-//        jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
-//        jl.setForeground(Color.black);
-//        c.add(jl);
+        JLabel jl = new JLabel("代理"); // 创建一个单行输入框
+        jl.setBounds(150, 350, 200, 30);
+        jl.setFont(new java.awt.Font("微软雅黑", 1, 15));
+        jl.setForeground(Color.black);
+        c.add(jl);
 
         JComboBox jComboBox = new JComboBox();
         jComboBox.setBounds(15, 350, 100, 30);
-        jComboBox.setFont(new java.awt.Font("微软雅黑", 1, 16));
-        jComboBox.addItem("1");
-        jComboBox.addItem("2");
-        jComboBox.addItem("3");
-        jComboBox.addItem("4");
-        jComboBox.addItem("5");
-        c.add(jComboBox);
+        jComboBox.setFont(new java.awt.Font("微软雅黑", 1, 13));
 
+        for (int i = 0; i < moneys.size(); i++) {
+            jComboBox.addItem(moneys.get(i).getTitle());
+        }
+        c.add(jComboBox);
 
         JButton readCkBtn = new JButton("读入账号");
         readCkBtn.setBounds(340, 400, 105, 60);
