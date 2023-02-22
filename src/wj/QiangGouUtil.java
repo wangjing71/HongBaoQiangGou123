@@ -11,7 +11,7 @@ import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static wj.MainPage.ckBeanList;
+import static wj.MainPage.*;
 
 public class QiangGouUtil {
     public static void qiangHongbaoTask() {
@@ -42,7 +42,8 @@ public class QiangGouUtil {
                                 }
                                 String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}"
                                                 .replaceAll("1677031591387", System.currentTimeMillis() + "")
-                                                .replaceAll("83161358157305", RandomUtils.getRandomPassword(14)),
+                                                .replaceAll("83161358157305", RandomUtils.getRandomPassword(14))
+                                                .replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()),
                                         ck);
                                 System.out.println(result);
                                 if (result.length() == 0) {
@@ -112,7 +113,7 @@ public class QiangGouUtil {
         StringBuilder result = new StringBuilder();
         BufferedReader in = null;
         try {
-            HttpURLConnection connection =ProxyUtil.getHttpURLConnectionProxy(url);
+            HttpURLConnection connection = ProxyUtil.getHttpURLConnectionProxy(url);
 
             // 设置通用的请求属性
             connection.setRequestProperty("Host", "api.m.jd.com");
