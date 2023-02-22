@@ -42,15 +42,21 @@ public class QiangGouUtil {
                                     ckBean.setState("success");
                                     return;
                                 }
-                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677036028955&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=02773837455598&cthr=1&loginType=2&h5st=&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22da3fc8218d2d1386d3b25242e563acb8%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1998783512%2C%22signStr%22%3A%22119eeb24784ff83ecda238184f262fd1%22%7D", ck);
+                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}"
+                                                .replaceAll("1677031591387", System.currentTimeMillis() + "")
+                                                .replaceAll("83161358157305", RandomUtils.getRandomPassword(14)),
+                                        ck);
                                 System.out.println(result);
-                                if(result.length()==0){
+                                if (result.length() == 0) {
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "返回空数据");
-                                }else{
+                                    ckBean.setState("空数据");
+                                } else {
                                     try {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
                                         System.out.println(CKUtil.getCkPtPin(ck) + ":" + errMsg);
+
+                                        ckBean.setState(errMsg);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -77,7 +83,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("origin", "https://bnzf.jd.com");
             connection.setRequestProperty("referer", "https://pushgold.jd.com/");
-            connection.setRequestProperty("User-Agent","Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)");
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -119,7 +125,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "*/*");
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://wqs.jd.com");
-            connection.setRequestProperty("User-Agent",UserAgentUtil.randomUserAgent());
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -197,51 +203,6 @@ public class QiangGouUtil {
         return result.toString();
     }
 
-    public static String sendGetHelp(String url, String ck) {
-        String result = "";
-        BufferedReader in = null;
-        try {
-            URL realUrl = new URL(url);
-
-            HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
-
-            // 设置通用的请求属性
-            connection.setRequestProperty("Host", "api.m.jd.com");
-            connection.setRequestProperty("Accept", "application/json, text/plain, */*");
-            connection.setRequestProperty("origin", "https://bnzf.jd.com");
-            connection.setRequestProperty("referer", "https://pushgold.jd.com/");
-            connection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.122 Safari/537.36 SE 2.X MetaSr 1.0");
-            connection.setRequestProperty("Cookie", ck);
-            connection.setReadTimeout(10000);
-            connection.setConnectTimeout(10000);
-            connection.connect();
-            if (connection.getResponseCode() == 200) {
-                in = new BufferedReader(new InputStreamReader(
-                        connection.getInputStream()));
-                String line;
-                while ((line = in.readLine()) != null) {
-                    result += line;
-                }
-            } else if (connection.getResponseCode() == 403) {
-                return "403EXE";
-            }
-        } catch (Exception e) {
-            System.out.println("发送GET请求出现异常！" + e);
-//            e.printStackTrace();
-        }
-        // 使用finally块来关闭输入流
-        finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
-        }
-        return result;
-    }
-
     private static ExecutorService pools = null;
 
     public static ExecutorService getInstance() {
@@ -253,11 +214,5 @@ public class QiangGouUtil {
             }
         }
         return pools;
-    }
-
-    public static void main(String[] args) {
-        String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677036133395&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=48320131048590&cthr=1&loginType=2&h5st=&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22da3fc8218d2d1386d3b25242e563acb8%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1998887953%2C%22signStr%22%3A%2239f0aa915f7e254f4bae49be4f2af4cd%22%7D",
-                "pt_key=app_openAAJj9UsVADCc57cQk6ENcE0kx1PiM-WIMf3GY-TT1yPZtljK0JWUklEoYHxplWeFksZTzUcLO-k;pt_pin=wj1029821170;");
-        System.out.println(result);
     }
 }
