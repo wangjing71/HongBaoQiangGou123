@@ -434,6 +434,19 @@ public class MainPage extends JFrame {
                     if (currentTime.contains("23:59:59")) {
                         qiangHongbaoTask();
                     }
+
+                    if (currentTime.contains("23:59:50")) {
+                        if (ClickUtil.isFastClick()) {
+                            return;
+                        }
+                        addJtaStr("开始获取代理！");
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ProxyUtil.getIpFromServer();
+                            }
+                        }).start();
+                    }
                     mainPage.setTitle("大赢家抢红包【葫芦娃出品】【qq397383523】" + "【时间】" + currentTime);
                 } catch (Exception e) {
                 }
