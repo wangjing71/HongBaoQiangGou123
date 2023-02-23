@@ -15,6 +15,7 @@ import static wj.MainPage.*;
 
 public class QiangGouUtil {
     public static int empty = 0;
+    public static int notEmpty = 0;
 
     public static void qiangHongbaoTask() {
         if (ClickUtil.isFastClick()) {
@@ -34,7 +35,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(8);
+                    ExecutorService pl = Executors.newFixedThreadPool(10);
                     for (int j = 0; j < 200; j++) {
                         pl.execute(new Runnable() {
                             @Override
@@ -58,8 +59,8 @@ public class QiangGouUtil {
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
                                     ckBean.setState("空数据");
                                 } else {
-                                    empty++;
-                                    System.out.println("非空:" + empty);
+                                    notEmpty++;
+                                    System.out.println("返回非空:" + notEmpty);
                                     try {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
