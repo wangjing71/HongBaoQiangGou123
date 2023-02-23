@@ -43,7 +43,6 @@ public class QiangGouUtil {
                                 }
                                 String result = null;
                                 result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck);
-                                System.out.println(result);
                                 if ("true".equals(ckBean.getTag())) {
                                     ckBean.setState("success");
                                     return;
@@ -51,11 +50,11 @@ public class QiangGouUtil {
                                 if (result.contains("success")) {
                                     ckBean.setTag("true");
                                     ckBean.setState("success");
-                                    FileUtil.appendKeyToFile(MainPage.CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
+                                    FileUtil.appendKeyToFile(CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
                                     return;
                                 }
                                 if (result.length() == 0) {
-                                    System.out.println(CKUtil.getCkPtPin(ck) + ":" + "返回空数据");
+                                    System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
                                     ckBean.setState("空数据");
                                 } else {
                                     try {
