@@ -130,7 +130,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://wqs.jd.com");
             if (moneys.get(selIndex).getTitle().contains("红包")) {
-                connection.setRequestProperty("User-Agent", "jdltapp;");
+                connection.setRequestProperty("User-Agent", "jdltapp;" + RandomUtils.getRandomPassword(32) + ";" + RandomUtils.getRandomNo(32));
             } else {
                 connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
             }
