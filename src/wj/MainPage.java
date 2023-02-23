@@ -162,7 +162,7 @@ public class MainPage extends JFrame {
         addJtaStr("推荐使用熊猫代理 3元1000个ip-5分钟");
         addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
         addJtaStr("熊猫代理api提取格式为json");
-        addJtaStr("ip提取数量=ck数量*10");
+        addJtaStr("ip提取数量=ck数量*12");
         addJtaStr("程序【23.59.50】获取代理！");
         addJtaStr("程序【23.59.59】开始抢红包！");
         addJtaStr("请在左边输入账号！");
