@@ -128,7 +128,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "*/*");
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://wqs.jd.com");
-            connection.setRequestProperty("User-Agent", "jdltapp;");
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
