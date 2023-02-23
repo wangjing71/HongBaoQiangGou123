@@ -50,7 +50,7 @@ public class QiangGouUtil {
                                 if (result.contains("success")) {
                                     ckBean.setTag("true");
                                     ckBean.setState("success");
-                                    FileUtil.appendKeyToFile(MainPage.CURRENT_PATH + "/result.txt", CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
+                                    FileUtil.appendKeyToFile(MainPage.CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
                                     return;
                                 }
                                 if (result.length() == 0) {
