@@ -163,6 +163,8 @@ public class MainPage extends JFrame {
         addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
         addJtaStr("熊猫代理api提取格式为json");
         addJtaStr("ip提取数量=ck数量*10");
+        addJtaStr("程序【23.59.50】获取代理！");
+        addJtaStr("程序【23.59.59】开始抢红包！");
         addJtaStr("请在左边输入账号！");
 
         readCkBtn.addMouseListener(new MouseAdapter() {
