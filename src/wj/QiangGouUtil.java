@@ -32,8 +32,8 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(10);
-                    for (int j = 0; j < 300; j++) {
+                    ExecutorService pl = Executors.newFixedThreadPool(5);
+                    for (int j = 0; j < 150; j++) {
                         pl.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -147,7 +147,7 @@ public class QiangGouUtil {
                 return "403EXE";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             System.out.println("发送GET请求出现异常3！" + e);
         } finally {
             try {
