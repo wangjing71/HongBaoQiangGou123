@@ -32,7 +32,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(5);
+                    ExecutorService pl = Executors.newFixedThreadPool(10);
                     for (int j = 0; j < 200; j++) {
                         pl.execute(new Runnable() {
                             @Override
@@ -149,6 +149,9 @@ public class QiangGouUtil {
         } catch (Exception e) {
 //            e.printStackTrace();
             System.out.println("发送GET请求出现异常3！" + e);
+            if (e.toString().contains("Unable to tunnel through proxy")) {
+                ProxyUtil.removeCurrentProxy();
+            }
         } finally {
             try {
                 if (in != null) {
