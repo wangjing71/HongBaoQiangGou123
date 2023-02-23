@@ -85,6 +85,7 @@ public class ProxyUtil {
                 ArrayList<ProxyBean.ProxyIp> objList = proxyBean.getObj();
                 proxyList.addAll(objList);
                 System.out.println("获取代理成功,代理ip池大小为:->" + proxyList.size());
+                MainPage.addJtaStr("获取代理成功,代理ip池大小为:->" + proxyList.size());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("获取代理发生异常");
