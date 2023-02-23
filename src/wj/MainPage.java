@@ -160,8 +160,10 @@ public class MainPage extends JFrame {
         addJtaStr("程序日志显示区域！");
 //        addJtaStr("程序当前运行目录:" + MainPage.CURRENT_PATH);
         addJtaStr("抢购模式:单帐号10线程");
-        addJtaStr("推荐使用熊猫代理:http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
-        addJtaStr("熊猫代理api--ip提取数量=ck数量*10");
+        addJtaStr("推荐使用熊猫代理");
+        addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
+        addJtaStr("熊猫代理api提取格式为json");
+        addJtaStr("ip提取数量=ck数量*10");
         addJtaStr("请在左边输入账号！");
 
         readCkBtn.addMouseListener(new MouseAdapter() {
