@@ -159,7 +159,7 @@ public class MainPage extends JFrame {
         WindowUtil.setWindowCenter(this);
         addJtaStr("程序日志显示区域！");
         addJtaStr("抢购模式:单帐号10线程");
-        addJtaStr("推荐使用熊猫代理");
+        addJtaStr("推荐使用熊猫代理 3元1000个ip-5分钟");
         addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
         addJtaStr("熊猫代理api提取格式为json");
         addJtaStr("ip提取数量=ck数量*10");
