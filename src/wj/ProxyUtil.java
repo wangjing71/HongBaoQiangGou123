@@ -85,6 +85,7 @@ public class ProxyUtil {
                 ArrayList<ProxyBean.ProxyIp> objList = proxyBean.getObj();
                 proxyList.addAll(objList);
                 System.out.println("获取代理成功,代理ip池大小为:->" + proxyList.size());
+                MainPage.addJtaStr("获取代理成功,代理ip池大小为:->" + proxyList.size());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("获取代理发生异常");
@@ -104,8 +105,7 @@ public class ProxyUtil {
             // 设置通用的请求属性
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-//            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOiIxNjY2ODcxMDk5IiwiZXhwIjoxNjY2OTU3NDk5LCJOYW1lIjoiMzk3MzgzNTIzIiwiSVAiOiIyMjEuMjI1LjE5NS4xNjkiLCJMb2dpblRpbWUiOiIxNjY2ODcxMDk5IiwiaXNzIjoiaHR0cC8vOnF1YW50dW0tYXNzaXN0YW50IiwiYXVkIjoiaHR0cC8vOnF1YW50dW0tYXNzaXN0YW50In0.KUjLI5soeaUahhDVquYnvFHVXAmLyY1a4QO96ik89kk");
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
             connection.connect();

@@ -14,10 +14,14 @@ import java.util.concurrent.Executors;
 import static wj.MainPage.*;
 
 public class QiangGouUtil {
+    public static int empty = 0;
+    public static int notEmpty = 0;
+
     public static void qiangHongbaoTask() {
         if (ClickUtil.isFastClick()) {
             return;
         }
+        addJtaStr("开始抢大赢家红包！");
         System.out.println("开始抢大赢家红包！");
         if (ckBeanList == null || ckBeanList.size() == 0) {
             System.out.println("ck为空 停止！");
@@ -32,7 +36,7 @@ public class QiangGouUtil {
                 @Override
                 public void run() {
                     ExecutorService pl = Executors.newFixedThreadPool(10);
-                    for (int j = 0; j < 300; j++) {
+                    for (int j = 0; j < 200; j++) {
                         pl.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -40,9 +44,7 @@ public class QiangGouUtil {
                                     ckBean.setState("success");
                                     return;
                                 }
-                                String result = null;
-                                result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck);
-                                System.out.println(result);
+                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck);
                                 if ("true".equals(ckBean.getTag())) {
                                     ckBean.setState("success");
                                     return;
@@ -50,13 +52,15 @@ public class QiangGouUtil {
                                 if (result.contains("success")) {
                                     ckBean.setTag("true");
                                     ckBean.setState("success");
-                                    FileUtil.appendKeyToFile(MainPage.CURRENT_PATH + "/result.txt", CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
+                                    FileUtil.appendKeyToFile(CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
                                     return;
                                 }
                                 if (result.length() == 0) {
-                                    System.out.println(CKUtil.getCkPtPin(ck) + ":" + "返回空数据");
+                                    System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
                                     ckBean.setState("空数据");
                                 } else {
+                                    notEmpty++;
+                                    System.out.println("返回非空:" + notEmpty);
                                     try {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
@@ -128,7 +132,11 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "*/*");
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://wqs.jd.com");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            if (moneys.get(selIndex).getTitle().contains("红包")) {
+                connection.setRequestProperty("User-Agent", "jdltapp;" + RandomUtils.getRandomPassword(32) + ";" + RandomUtils.getRandomNo(32));
+            } else {
+                connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            }
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -143,8 +151,11 @@ public class QiangGouUtil {
                 return "403EXE";
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             System.out.println("发送GET请求出现异常3！" + e);
+            if (e.toString().contains("Unable to tunnel through proxy")) {
+                ProxyUtil.removeCurrentProxy();
+            }
         } finally {
             try {
                 if (in != null) {

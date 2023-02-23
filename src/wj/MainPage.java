@@ -83,13 +83,13 @@ public class MainPage extends JFrame {
         jl.setForeground(Color.black);
         c.add(jl);
 
-        JTextField textField = new JTextField("HttpIp代理地址"); // 创建一个单行输入框
+        JTextField textField = new JTextField("熊猫代理api--ip提取数量=ck数量*10"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
         textField.setBounds(183, 350, 480, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
-        setTipsInfo(textField, "HttpIp代理地址");
+        setTipsInfo(textField, "熊猫代理api--ip提取数量=ck数量*10");
 
         JButton updateConfig = new JButton("更新配置");
         updateConfig.setBounds(675, 350, 100, 30);
@@ -157,10 +157,14 @@ public class MainPage extends JFrame {
         this.setLayout(null);
         this.setVisible(true);
         WindowUtil.setWindowCenter(this);
-
         addJtaStr("程序日志显示区域！");
-//        addJtaStr("程序当前运行目录:" + MainPage.CURRENT_PATH);
-        addJtaStr("抢购模式:单帐号20线程");
+        addJtaStr("抢购模式:单帐号10线程");
+        addJtaStr("推荐使用熊猫代理 3元1000个ip-5分钟");
+        addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
+        addJtaStr("熊猫代理api提取格式为json");
+        addJtaStr("ip提取数量=ck数量*12");
+        addJtaStr("程序【23.59.50】获取代理！");
+        addJtaStr("程序【23.59.59】开始抢红包！");
         addJtaStr("请在左边输入账号！");
 
         readCkBtn.addMouseListener(new MouseAdapter() {
@@ -179,7 +183,6 @@ public class MainPage extends JFrame {
         ceshi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                addJtaStr("开始抢红包！");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -433,7 +436,20 @@ public class MainPage extends JFrame {
                     if (currentTime.contains("23:59:59")) {
                         qiangHongbaoTask();
                     }
-                    mainPage.setTitle("大赢家抢红包" + "--【时间】" + currentTime);
+
+                    if (currentTime.contains("23:59:50")) {
+                        if (ClickUtil.isFastClick()) {
+                            return;
+                        }
+                        addJtaStr("开始获取代理！");
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ProxyUtil.getIpFromServer();
+                            }
+                        }).start();
+                    }
+                    mainPage.setTitle("大赢家抢红包【葫芦娃出品】【qq397383523】" + "【时间】" + currentTime);
                 } catch (Exception e) {
                 }
             }
