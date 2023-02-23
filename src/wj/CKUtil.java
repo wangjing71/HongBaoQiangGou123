@@ -1,9 +1,5 @@
 package wj;
 
-
-import java.util.HashMap;
-
-
 public class CKUtil {
     /*
      * 截图CK的 pt_pin字段
