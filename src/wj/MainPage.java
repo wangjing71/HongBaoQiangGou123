@@ -181,7 +181,6 @@ public class MainPage extends JFrame {
         ceshi.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                addJtaStr("开始抢红包！");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
