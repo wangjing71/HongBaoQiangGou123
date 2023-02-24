@@ -260,11 +260,10 @@ public class MainPage extends JFrame {
             configBean = new ConfigBean();
             jComboBox1.setSelectedIndex(THREAD_COUNT - 1);
         } else {
-            System.out.println(configBean.getThreadCount() - 1);
-            System.out.println(configBean.getSelIndex());
             textField.setText(configBean.getProxyUrl());
             jComboBox1.setSelectedIndex(configBean.getThreadCount() - 1);
             jComboBox.setSelectedIndex(configBean.getSelIndex());
+            THREAD_COUNT = configBean.getThreadCount();
         }
 
         jComboBox.addActionListener(new ActionListener() {

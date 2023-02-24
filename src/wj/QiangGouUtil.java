@@ -85,6 +85,12 @@ public class QiangGouUtil {
                                         ckBean.setState("解析异常");
                                     }
                                 }
+
+                                try {
+                                    Thread.sleep(50000);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
+                                }
                             }
                         });
                     }
