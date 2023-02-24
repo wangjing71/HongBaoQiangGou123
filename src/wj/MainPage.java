@@ -1,6 +1,10 @@
 package wj;
 
 import com.google.gson.Gson;
+import org.json.JSONObject;
+import wj.safe.Des3;
+import wj.safe.Des3Util;
+import wj.safe.DesUtil;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -16,8 +20,18 @@ import static wj.QiangGouUtil.*;
 public class MainPage extends JFrame {
 
     public static void main(String[] args) {
-        String result = HttpUtil.get("http://43.142.100.135/wangjing/update");
-        new MainPage();
+        String result = HttpUtil.get("http://43.142.100.135/wangjing/update?type=1");
+        String realData = Des3Util.decode(result);
+        System.out.println(realData);
+        try {
+            JSONObject job = new JSONObject(realData);
+            String hideSafe = job.optString("hideSafe");
+            if ("0".equals(hideSafe)) {
+                new MainPage();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static ConfigBean configBean = new ConfigBean();
