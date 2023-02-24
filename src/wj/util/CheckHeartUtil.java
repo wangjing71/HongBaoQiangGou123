@@ -20,7 +20,7 @@ public class CheckHeartUtil {
             String hideSafe = job.optString("hideSafe");
             long serverTime = job.optLong("serverTime");
             if ("0".equals(hideSafe) && serverTime > lastTime) {
-                System.out.println("检查通过");
+//                System.out.println("心跳检查通过");
                 lastTime = serverTime;
                 return true;
             } else {
