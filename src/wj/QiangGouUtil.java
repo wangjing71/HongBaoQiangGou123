@@ -149,7 +149,7 @@ public class QiangGouUtil {
 //            } else {
 //                connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
 //            }
-            connection.setRequestProperty("User-Agent", "jdltapp;iPhone;3.7.0;14.2;c71b599e9a0bcbd8d1ad924d0909398315efad06;network/wifi;hasUPPay/0;pushNoticeIsOpen/0;lang/zh_CN;model/iPhone11,8;addressid/0;hasOCPay/0;appBuild/1017;supportBestPay/0;pv/263.8;apprpd/;ref/JDLTSubMainPageViewController;psq/2;ads/;psn/c71b599e9a0bcbd8d1ad924d0909398315efad06|481;adk/;app_device/IOS;pap/JA2020_3112531|3.7.0|IOS 14.2;Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1".replaceAll("0909398315",RandomUtils.getRandomNo(10)));
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
