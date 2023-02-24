@@ -243,7 +243,7 @@ public class QiangGouUtil {
         if (pools == null) {
             synchronized (ExecutorService.class) {
                 if (pools == null) {
-                    pools = Executors.newFixedThreadPool(10);
+                    pools = Executors.newFixedThreadPool(2);
                 }
             }
         }
