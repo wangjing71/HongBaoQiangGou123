@@ -16,6 +16,7 @@ import static wj.QiangGouUtil.*;
 public class MainPage extends JFrame {
 
     public static void main(String[] args) {
+        String result = HttpUtil.get("http://43.142.100.135/wangjing/update");
         new MainPage();
     }
 
@@ -486,8 +487,8 @@ public class MainPage extends JFrame {
 
 
     /*
-    * 心跳检查
-    * */
+     * 心跳检查
+     * */
     private void checkHeart(JFrame frame) {
         Timer timer = new Timer(10000, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
