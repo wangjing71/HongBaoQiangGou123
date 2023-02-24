@@ -35,7 +35,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(10);
+                    ExecutorService pl = Executors.newFixedThreadPool(5);
                     for (int j = 0; j < 200; j++) {
                         pl.execute(new Runnable() {
                             @Override
