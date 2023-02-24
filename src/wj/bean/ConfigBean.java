@@ -8,7 +8,7 @@ public class ConfigBean {
     private int startHelpIndex = 0;
     private long helpDelay = 200;
 
-    private int threadCount = 5;
+    private int threadCount = 6;
 
     private int selIndex = 0;
 
