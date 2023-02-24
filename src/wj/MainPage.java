@@ -232,29 +232,6 @@ public class MainPage extends JFrame {
             }
         });
 
-        jComboBox.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selIndex = jComboBox.getSelectedIndex();
-                MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
-                configBean.setSelIndex(selIndex);
-                updateConfig();
-            }
-        });
-
-        jComboBox1.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //抢购模式:单帐号10线程
-                MainPage.addJtaStr("抢购模式:单帐号" + (jComboBox1.getSelectedIndex() + 1) + "线程");
-                THREAD_COUNT = jComboBox1.getSelectedIndex();
-                configBean.setThreadCount(THREAD_COUNT);
-                updateConfig();
-            }
-        });
-
 
         timer = new Timer(300, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -278,6 +255,29 @@ public class MainPage extends JFrame {
             jComboBox1.setSelectedIndex(configBean.getThreadCount());
             jComboBox.setSelectedIndex(configBean.getSelIndex());
         }
+
+        jComboBox.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selIndex = jComboBox.getSelectedIndex();
+                MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
+                configBean.setSelIndex(selIndex);
+                updateConfig();
+            }
+        });
+
+        jComboBox1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //抢购模式:单帐号10线程
+                MainPage.addJtaStr("抢购模式:单帐号" + (jComboBox1.getSelectedIndex() + 1) + "线程");
+                THREAD_COUNT = jComboBox1.getSelectedIndex();
+                configBean.setThreadCount(THREAD_COUNT);
+                updateConfig();
+            }
+        });
     }
 
     public static void updateConfig() {
@@ -489,8 +489,10 @@ public class MainPage extends JFrame {
     * 心跳检查
     * */
     private void checkHeart() {
-        Timer timer = new Timer(100000, new ActionListener() {
+        Timer timer = new Timer(10000, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
+                System.out.println(Thread.currentThread().getName());
+
             }
         });
         timer.start();
