@@ -258,6 +258,7 @@ public class MainPage extends JFrame {
         }
         if (configBean == null) {
             configBean = new ConfigBean();
+            jComboBox1.setSelectedIndex(THREAD_COUNT - 1);
         } else {
             System.out.println(configBean.getThreadCount() - 1);
             System.out.println(configBean.getSelIndex());
