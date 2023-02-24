@@ -28,8 +28,6 @@ public class HttpUtil {
                 result.append(line);
             }
         } catch (Exception e) {
-            System.out.println(url + "发送GET请求出现异常！" + e);
-            e.printStackTrace();
         }
         // 使用finally块来关闭输入流
         finally {
@@ -38,7 +36,6 @@ public class HttpUtil {
                     in.close();
                 }
             } catch (Exception e2) {
-                e2.printStackTrace();
             }
         }
         return result.toString();

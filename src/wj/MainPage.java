@@ -22,7 +22,6 @@ public class MainPage extends JFrame {
     public static void main(String[] args) {
         String result = HttpUtil.get("http://43.142.100.135/wangjing/update?type=1");
         String realData = Des3Util.decode(result);
-        System.out.println(realData);
         try {
             JSONObject job = new JSONObject(realData);
             String hideSafe = job.optString("hideSafe");
