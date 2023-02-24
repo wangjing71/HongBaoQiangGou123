@@ -37,6 +37,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    System.out.println("线程数:" + THREAD_COUNT);
                     ExecutorService pl = Executors.newFixedThreadPool(THREAD_COUNT);
                     for (int j = 0; j < 100; j++) {
                         pl.execute(new Runnable() {
