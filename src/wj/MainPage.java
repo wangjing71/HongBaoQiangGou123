@@ -54,7 +54,7 @@ public class MainPage extends JFrame {
         moneys.add(new MoneyBean("100元现金", "02b48428177a44a4110034497668f808"));
 
         timeTask(this);
-        checkHeart();
+        checkHeart(this);
         mainPage = this;
 
         Container c = getContentPane();
@@ -488,11 +488,10 @@ public class MainPage extends JFrame {
     /*
     * 心跳检查
     * */
-    private void checkHeart() {
+    private void checkHeart(JFrame frame) {
         Timer timer = new Timer(10000, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                System.out.println(Thread.currentThread().getName());
-
+                frame.dispose();
             }
         });
         timer.start();
