@@ -20,7 +20,9 @@ import static wj.QiangGouUtil.*;
 public class MainPage extends JFrame {
 
     public static void main(String[] args) {
+        System.out.println("正在验证...");
         if (CheckHeartUtil.pass()) {
+            System.out.println("验证通过，启动窗口！");
             new MainPage();
         }
     }
@@ -257,6 +259,8 @@ public class MainPage extends JFrame {
         if (configBean == null) {
             configBean = new ConfigBean();
         } else {
+            System.out.println(configBean.getThreadCount() - 1);
+            System.out.println(configBean.getSelIndex());
             textField.setText(configBean.getProxyUrl());
             jComboBox1.setSelectedIndex(configBean.getThreadCount() - 1);
             jComboBox.setSelectedIndex(configBean.getSelIndex());
