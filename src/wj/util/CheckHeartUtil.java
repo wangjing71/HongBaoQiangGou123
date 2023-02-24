@@ -12,7 +12,7 @@ public class CheckHeartUtil {
     private static long lastTime = 0;
 
     public static boolean pass() {
-        String result = CheckHeartUtil.get("http://43.142.100.135/wangjing/update?type=1");
+        String result = CheckHeartUtil.get("http://43.142.100.135/wangjing/update?type=1&deviceId=" + MachineCodeUtil.getThisMachineCodeMd5() + "&appVersion=1.0");
         String realData = Des3Util.decode(result);
 //        realData = "{\"isUpdate\":\"0\",\"content_url\":\"http://106.55.196.225:8080/wangjing/file/1011.apk\",\"content\":\"版本更新V10.1.1\\n\\n修复wskey频繁失效问题！！！\\n\\n如果无法在线更新请从Q群置顶文件下载最新安装包\\n\\n如果显示异常，请移除小组件后重新添加\",\"widgetTip\":\"\",\"mainImg\":\"http://106.55.196.225:8080/wangjing/file/splash_bg5.jpg\",\"release\":\"10.1.1\",\"hideSafe\":\"0\",\"isDark\":\"0\",\"showGuaDou\":\"1\",\"qqGroupLink\":\"oYUSH-IEmLKUDRnpVZAvMMUHGwUXmWlk\",\"serverTime\":1677227964262,\"serverType\":\"1\",\"showHelp\":\"0\",\"color\":\"#ff00ff\",\"loadType\":\"1\",\"uploadSucTip\":\"呆瓜交流群：753359460\\n需要农场种豆萌宠满助力请加群！！！\",\"uploadFailTip\":\"\"}";
         try {
@@ -23,7 +23,7 @@ public class CheckHeartUtil {
                 System.out.println("检查通过");
                 lastTime = serverTime;
                 return true;
-            }else{
+            } else {
                 lastTime = serverTime;
             }
         } catch (Exception e) {
