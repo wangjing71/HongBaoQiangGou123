@@ -36,7 +36,7 @@ public class QiangGouUtil {
                 @Override
                 public void run() {
                     ExecutorService pl = Executors.newFixedThreadPool(5);
-                    for (int j = 0; j < 50; j++) {
+                    for (int j = 0; j < 200; j++) {
                         pl.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -44,7 +44,7 @@ public class QiangGouUtil {
                                     ckBean.setState("success");
                                     return;
                                 }
-                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck);
+                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck).trim();
                                 if ("true".equals(ckBean.getTag())) {
                                     ckBean.setState("success");
                                     return;
@@ -55,21 +55,26 @@ public class QiangGouUtil {
                                     FileUtil.appendKeyToFile(CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
                                     return;
                                 }
+                                System.out.println("result.length:" + result.length());
                                 if (result.length() == 0) {
                                     empty++;
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
                                     System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     ckBean.setState("空数据");
                                 } else {
-                                    notEmpty++;
-                                    System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     try {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
                                         System.out.println(CKUtil.getCkPtPin(ck) + ":" + errMsg);
                                         ckBean.setState(errMsg);
+                                        notEmpty++;
+                                        System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     } catch (Exception e) {
                                         e.printStackTrace();
+                                        empty++;
+                                        System.out.println(CKUtil.getCkPtPin(ck) + ":" + "解析异常");
+                                        System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        ckBean.setState("解析异常");
                                     }
                                 }
                             }
@@ -167,7 +172,7 @@ public class QiangGouUtil {
                 e2.printStackTrace();
             }
         }
-        return result.toString();
+        return result.toString().trim().replaceAll(" ", "");
     }
 
     public static String sendPost(String url, String param, String ck) {
