@@ -42,6 +42,7 @@ public class MainPage extends JFrame {
 
     public static JComboBox jComboBox1;
     public static JComboBox jComboBox;
+    public static JTextField textField;
 
     TableModel dataModel;
     JScrollPane scrollpane;
@@ -94,7 +95,7 @@ public class MainPage extends JFrame {
         jl.setForeground(Color.black);
         c.add(jl);
 
-        JTextField textField = new JTextField("【熊猫代理api】ip提取数量=ck数量*线程数"); // 创建一个单行输入框
+        textField = new JTextField("【熊猫代理api】ip提取数量=ck数量*线程数"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
         textField.setBounds(153, 350, 350, 30);
@@ -233,7 +234,6 @@ public class MainPage extends JFrame {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        configBean.setProxyUrl(textField.getText());
                         updateConfig();
                     }
                 }).start();
@@ -292,6 +292,7 @@ public class MainPage extends JFrame {
     }
 
     public static void updateConfig() {
+        configBean.setProxyUrl(textField.getText());
         MainPage.addJtaStr("更新配置文件:" + MainPage.CURRENT_PATH + "/config.json");
         FileUtil.reWriteFile(MainPage.CURRENT_PATH + "/config.json", gson.toJson(configBean));
     }
