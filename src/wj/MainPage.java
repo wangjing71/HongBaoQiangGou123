@@ -34,6 +34,7 @@ public class MainPage extends JFrame {
     public static ArrayList<HelpCkBean> ckBeanList = new ArrayList<>();
 
     public static JComboBox jComboBox1;
+    public static JComboBox jComboBox;
 
     TableModel dataModel;
     JScrollPane scrollpane;
@@ -98,7 +99,7 @@ public class MainPage extends JFrame {
         setJbtBac(updateConfig);
         c.add(updateConfig);
 
-        JComboBox jComboBox = new JComboBox();
+        jComboBox = new JComboBox();
         jComboBox.setBounds(15, 350, 90, 30);
         jComboBox.setFont(new java.awt.Font("微软雅黑", 0, 13));
 
@@ -237,7 +238,8 @@ public class MainPage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 selIndex = jComboBox.getSelectedIndex();
                 MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
-                System.out.println(jComboBox.getSelectedIndex() + "");
+                configBean.setSelIndex(selIndex);
+                updateConfig();
             }
         });
 
@@ -274,6 +276,7 @@ public class MainPage extends JFrame {
         } else {
             textField.setText(configBean.getProxyUrl());
             jComboBox1.setSelectedIndex(configBean.getThreadCount());
+            jComboBox.setSelectedIndex(configBean.getSelIndex());
         }
     }
 

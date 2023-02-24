@@ -10,11 +10,21 @@ public class ConfigBean {
 
     private int threadCount = 5;
 
+    private int selIndex = 0;
+
     public String taskHH = "00";
     public String taskMM = "00";
     public String taskSS = "00";
 
     private String jinBiInviteCode;
+
+    public int getSelIndex() {
+        return selIndex;
+    }
+
+    public void setSelIndex(int selIndex) {
+        this.selIndex = selIndex;
+    }
 
     public String getJinBiInviteCode() {
         return jinBiInviteCode;
