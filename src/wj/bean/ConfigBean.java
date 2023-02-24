@@ -1,4 +1,4 @@
-package wj;
+package wj.bean;
 
 public class ConfigBean {
     private String quantumHost;

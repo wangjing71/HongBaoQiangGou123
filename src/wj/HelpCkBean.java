@@ -1,5 +1,7 @@
 package wj;
 
+import wj.util.CKUtil;
+
 public class HelpCkBean {
     private String ckStr;
     private String state; //状态 0白号 1帮砍机会用完 2火爆 未登录 verify

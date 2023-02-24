@@ -1,4 +1,4 @@
-package wj;
+package wj.util;
 
 import org.json.JSONObject;
 import wj.safe.Des3Util;

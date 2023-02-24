@@ -1,4 +1,6 @@
-package wj;
+package wj.util;
+
+import wj.MainPage;
 
 import java.util.ArrayList;
 import java.util.Random;

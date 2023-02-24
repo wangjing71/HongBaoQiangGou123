@@ -1,4 +1,4 @@
-package wj;
+package wj.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
