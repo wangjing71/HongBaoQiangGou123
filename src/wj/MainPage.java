@@ -466,7 +466,7 @@ public class MainPage extends JFrame {
                 try {
                     String currentTime = TimeUtil.getTime();
 
-                    if (currentTime.contains("23:59:58")) {
+                    if (currentTime.contains("23:59:59")) {
                         qiangHongbaoTask();
                     }
 
