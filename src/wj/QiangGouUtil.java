@@ -21,7 +21,7 @@ public class QiangGouUtil {
 
     public static void main(String[] args) {
 
-        String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1675701475905&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=13729923124741231&cthr=1&loginType=2&h5st=20230207003755902%3B95yyiy66t0jc1dt9%3Baf89e%3Btk02w72d91b3218n6So3TTfM7G3AhJgIiceg5avMqH4rT7a5ybQ%2F201r%2BwRk1u9SX2Ic0zWGifV9FOW2bxnT%2BwCInMzm%3Bd68fff75dcf3399fb39d6257b486855abd5f8888ccba7e8739508b4eae0ba6cf%3B400%3B1675701475902%3B22fac0cfc748d13d11407640ec6b0f4fb2e9076d1de03ca91db431dd1289786d1ff17236c40ebc9e7c008832ae688019a957059e30884cb09ec4e0608989c06e1e637f55dd7b66afbd256c5762949e3c83bbe0179a7fdaa6c2d27103305d510eb3409bd26c9575b31489243e4e8a7873d8cfc69a553fee569e3674d10673131c03212b989ff47b110fd383475ba6fca899302730f633c43b16492a77d46d9671794bbd621c13e51ad0f2f6e9873b149c6ffa4d0f695162609fe0992ab8c07c97&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22b141ddd915d20f078d69f6910b02a60a%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1675701475905%2C%22signStr%22%3A%22a3bb877d89bcce0b3b86021ad2391913%22%7D","pt_key=app_openAAJj-JbTADDkBBsw9v9tvHvT3VfdTvj83HxDxoyAoNomD7lmoQR6AWTGAjS513cFS7-9PfFsoXw;pt_pin=wj1029821170;");
+        String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1675701475905&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=13729923124741231&cthr=1&loginType=2&h5st=20230207003755902%3B95yyiy66t0jc1dt9%3Baf89e%3Btk02w72d91b3218n6So3TTfM7G3AhJgIiceg5avMqH4rT7a5ybQ%2F201r%2BwRk1u9SX2Ic0zWGifV9FOW2bxnT%2BwCInMzm%3Bd68fff75dcf3399fb39d6257b486855abd5f8888ccba7e8739508b4eae0ba6cf%3B400%3B1675701475902%3B22fac0cfc748d13d11407640ec6b0f4fb2e9076d1de03ca91db431dd1289786d1ff17236c40ebc9e7c008832ae688019a957059e30884cb09ec4e0608989c06e1e637f55dd7b66afbd256c5762949e3c83bbe0179a7fdaa6c2d27103305d510eb3409bd26c9575b31489243e4e8a7873d8cfc69a553fee569e3674d10673131c03212b989ff47b110fd383475ba6fca899302730f633c43b16492a77d46d9671794bbd621c13e51ad0f2f6e9873b149c6ffa4d0f695162609fe0992ab8c07c97&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22b141ddd915d20f078d69f6910b02a60a%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1675701475905%2C%22signStr%22%3A%22a3bb877d89bcce0b3b86021ad2391913%22%7D", "pt_key=app_openAAJj-JbTADDkBBsw9v9tvHvT3VfdTvj83HxDxoyAoNomD7lmoQR6AWTGAjS513cFS7-9PfFsoXw;pt_pin=wj1029821170;");
         System.out.println(result);
 
     }
@@ -55,7 +55,7 @@ public class QiangGouUtil {
                                     return;
                                 }
                                 String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck).trim();
-                                if("403EXE".equals(result)){
+                                if ("403EXE".equals(result)) {
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "IP已黑");
                                     return;
                                 }
@@ -158,7 +158,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1675701475905&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=13729923124741231&cthr=1&loginType=2&h5st=20230207003755902%3B95yyiy66t0jc1dt9%3Baf89e%3Btk02w72d91b3218n6So3TTfM7G3AhJgIiceg5avMqH4rT7a5ybQ%2F201r%2BwRk1u9SX2Ic0zWGifV9FOW2bxnT%2BwCInMzm%3Bd68fff75dcf3399fb39d6257b486855abd5f8888ccba7e8739508b4eae0ba6cf%3B400%3B1675701475902%3B22fac0cfc748d13d11407640ec6b0f4fb2e9076d1de03ca91db431dd1289786d1ff17236c40ebc9e7c008832ae688019a957059e30884cb09ec4e0608989c06e1e637f55dd7b66afbd256c5762949e3c83bbe0179a7fdaa6c2d27103305d510eb3409bd26c9575b31489243e4e8a7873d8cfc69a553fee569e3674d10673131c03212b989ff47b110fd383475ba6fca899302730f633c43b16492a77d46d9671794bbd621c13e51ad0f2f6e9873b149c6ffa4d0f695162609fe0992ab8c07c97&body=%7B%22bizCode%22%3A%22makemoneyshop%22%2C%22ruleId%22%3A%22b141ddd915d20f078d69f6910b02a60a%22%2C%22sceneval%22%3A2%2C%22buid%22%3A325%2C%22appCode%22%3A%22ms2362fc9e%22%2C%22time%22%3A1675701475905%2C%22signStr%22%3A%22a3bb877d89bcce0b3b86021ad2391913%22%7D");
             connection.setRequestProperty("User-Agent", "jdltapp;");
-            connection.setRequestProperty("Cookie", ck);
+            connection.setRequestProperty("Cookie", ck + ";  __jda=95931165.167725822481711580324048.1677258224817.1677258224817.1677258224817.148");
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
             connection.connect();
