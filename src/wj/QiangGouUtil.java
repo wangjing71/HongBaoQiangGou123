@@ -104,7 +104,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("origin", "https://bnzf.jd.com");
             connection.setRequestProperty("referer", "https://pushgold.jd.com/");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
