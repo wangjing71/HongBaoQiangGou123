@@ -78,7 +78,7 @@ public class MainPage extends JFrame {
         c.add(ckInputEdtScroll);
 
         JLabel jl = new JLabel("代理"); // 创建一个单行输入框
-        jl.setBounds(150, 350, 200, 30);
+        jl.setBounds(120, 350, 200, 30);
         jl.setFont(new java.awt.Font("微软雅黑", 0, 15));
         jl.setForeground(Color.black);
         c.add(jl);
@@ -86,7 +86,7 @@ public class MainPage extends JFrame {
         JTextField textField = new JTextField("熊猫代理api--ip提取数量=ck数量*10"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
-        textField.setBounds(183, 350, 480, 30);
+        textField.setBounds(153, 350, 250, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
         setTipsInfo(textField, "熊猫代理api--ip提取数量=ck数量*10");
@@ -97,7 +97,7 @@ public class MainPage extends JFrame {
         c.add(updateConfig);
 
         JComboBox jComboBox = new JComboBox();
-        jComboBox.setBounds(15, 350, 100, 30);
+        jComboBox.setBounds(15, 350, 90, 30);
         jComboBox.setFont(new java.awt.Font("微软雅黑", 0, 13));
 
         for (int i = 0; i < moneys.size(); i++) {
