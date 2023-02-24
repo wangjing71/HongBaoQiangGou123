@@ -86,7 +86,7 @@ public class MainPage extends JFrame {
         JTextField textField = new JTextField("熊猫代理api--ip提取数量=ck数量*10"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
-        textField.setBounds(153, 350, 300, 30);
+        textField.setBounds(153, 350, 350, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
         setTipsInfo(textField, "熊猫代理api--ip提取数量=ck数量*10");
@@ -235,6 +235,16 @@ public class MainPage extends JFrame {
                 selIndex = jComboBox.getSelectedIndex();
                 MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
                 System.out.println(jComboBox.getSelectedIndex() + "");
+            }
+        });
+
+        jComboBox1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //抢购模式:单帐号10线程
+                MainPage.addJtaStr("抢购模式:单帐号" + (jComboBox1.getSelectedIndex() + 1) + "线程");
+                THREAD_COUNT = jComboBox1.getSelectedIndex();
             }
         });
 
