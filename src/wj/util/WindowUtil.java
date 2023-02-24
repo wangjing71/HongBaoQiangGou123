@@ -1,4 +1,4 @@
-package wj;
+package wj.util;
 
 import javax.swing.*;
 import java.awt.*;

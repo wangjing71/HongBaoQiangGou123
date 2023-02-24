@@ -1,20 +1,30 @@
-package wj;
+package wj.bean;
 
 public class ConfigBean {
     private String quantumHost;
     private String appKey;
-    private String proxyUrl = "http://api.xiequ.cn/VAD/GetIp.aspx?act=get&uid=98504&vkey=235CE8F94EC6C2C71B9C77750B10EC31&num=1&time=30&plat=1&re=0&type=0&so=1&ow=1&spl=1&addr=&db=1";
+    private String proxyUrl = "";
     private int helpCount = 150;
     private int startHelpIndex = 0;
     private long helpDelay = 200;
 
-    private int threadCount = 1;
+    private int threadCount = 5;
+
+    private int selIndex = 0;
 
     public String taskHH = "00";
     public String taskMM = "00";
     public String taskSS = "00";
 
     private String jinBiInviteCode;
+
+    public int getSelIndex() {
+        return selIndex;
+    }
+
+    public void setSelIndex(int selIndex) {
+        this.selIndex = selIndex;
+    }
 
     public String getJinBiInviteCode() {
         return jinBiInviteCode;

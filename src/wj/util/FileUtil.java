@@ -1,4 +1,4 @@
-package wj;
+package wj.util;
 
 
 
@@ -79,7 +79,7 @@ public class FileUtil {
             }
             br.close();
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return ckList;
     }
@@ -91,7 +91,7 @@ public class FileUtil {
         if (fixedThreadPool == null) {
             synchronized (ExecutorService.class) {
                 if (fixedThreadPool == null) {
-                    fixedThreadPool = Executors.newFixedThreadPool(200);
+                    fixedThreadPool = Executors.newFixedThreadPool(2);
                 }
             }
         }

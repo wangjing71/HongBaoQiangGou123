@@ -1,6 +1,7 @@
 package wj;
 
 import org.json.JSONObject;
+import wj.util.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.util.concurrent.Executors;
 import static wj.MainPage.*;
 
 public class QiangGouUtil {
+    public static int THREAD_COUNT = 5;
     public static int empty = 0;
     public static int notEmpty = 0;
 
@@ -35,8 +37,8 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(10);
-                    for (int j = 0; j < 200; j++) {
+                    ExecutorService pl = Executors.newFixedThreadPool(THREAD_COUNT);
+                    for (int j = 0; j < 100; j++) {
                         pl.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -44,7 +46,7 @@ public class QiangGouUtil {
                                     ckBean.setState("success");
                                     return;
                                 }
-                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck);
+                                String result = sendGet("https://api.m.jd.com/api?functionId=jxPrmtExchange_exchange&appid=cs_h5&t=1677031591387&channel=jxh5&cv=1.2.5&clientVersion=1.2.5&client=jxh5&uuid=83161358157305&cthr=1&loginType=2&h5st=&body={\"bizCode\":\"makemoneyshop\",\"ruleId\":\"da3fc8218d2d1386d3b25242e563acb8\",\"sceneval\":2,\"buid\":325,\"appCode\":\"ms2362fc9e\",\"time\":1994345945,\"signStr\":\"12ff2fa38d51f26a09eb4fa4f6ac2803\"}".replaceAll("1677031591387", System.currentTimeMillis() + "").replaceAll("da3fc8218d2d1386d3b25242e563acb8", moneys.get(selIndex).getId()).replaceAll("83161358157305", RandomUtils.getRandomPassword(14)), ck).trim();
                                 if ("true".equals(ckBean.getTag())) {
                                     ckBean.setState("success");
                                     return;
@@ -56,18 +58,29 @@ public class QiangGouUtil {
                                     return;
                                 }
                                 if (result.length() == 0) {
+                                    empty++;
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
+                                    System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     ckBean.setState("空数据");
                                 } else {
-                                    notEmpty++;
-                                    System.out.println("返回非空:" + notEmpty);
                                     try {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
                                         System.out.println(CKUtil.getCkPtPin(ck) + ":" + errMsg);
+                                        if (errMsg.length() == 0) {
+                                            empty++;
+                                            System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        } else {
+                                            notEmpty++;
+                                            System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        }
                                         ckBean.setState(errMsg);
                                     } catch (Exception e) {
                                         e.printStackTrace();
+                                        empty++;
+                                        System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        System.out.println(CKUtil.getCkPtPin(ck) + ":" + "解析异常");
+                                        ckBean.setState("解析异常");
                                     }
                                 }
                             }
@@ -92,7 +105,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("origin", "https://bnzf.jd.com");
             connection.setRequestProperty("referer", "https://pushgold.jd.com/");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -132,11 +145,12 @@ public class QiangGouUtil {
             connection.setRequestProperty("Accept", "*/*");
             connection.setRequestProperty("Accept-Language", "zh-cn");
             connection.setRequestProperty("Referer", "https://wqs.jd.com");
-            if (moneys.get(selIndex).getTitle().contains("红包")) {
-                connection.setRequestProperty("User-Agent", "jdltapp;" + RandomUtils.getRandomPassword(32) + ";" + RandomUtils.getRandomNo(32));
-            } else {
-                connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
-            }
+//            if (moneys.get(selIndex).getTitle().contains("红包")) {
+//                connection.setRequestProperty("User-Agent", "jdltapp;" + RandomUtils.getRandomPassword(32) + ";" + RandomUtils.getRandomNo(32));
+//            } else {
+//                connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+//            }
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
             connection.setRequestProperty("Cookie", ck);
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
@@ -165,7 +179,7 @@ public class QiangGouUtil {
                 e2.printStackTrace();
             }
         }
-        return result.toString();
+        return result.toString().trim().replaceAll(" ", "");
     }
 
     public static String sendPost(String url, String param, String ck) {
@@ -224,7 +238,7 @@ public class QiangGouUtil {
         if (pools == null) {
             synchronized (ExecutorService.class) {
                 if (pools == null) {
-                    pools = Executors.newFixedThreadPool(20);
+                    pools = Executors.newFixedThreadPool(10);
                 }
             }
         }

@@ -1,6 +1,10 @@
 package wj;
 
 import com.google.gson.Gson;
+import wj.bean.ConfigBean;
+import wj.bean.DataBean;
+import wj.bean.MoneyBean;
+import wj.util.*;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -16,9 +20,10 @@ import static wj.QiangGouUtil.*;
 public class MainPage extends JFrame {
 
     public static void main(String[] args) {
-        new MainPage();
+        if (CheckHeartUtil.pass()) {
+            new MainPage();
+        }
     }
-
 
     public static ConfigBean configBean = new ConfigBean();
     public static int selIndex = 0;
@@ -32,6 +37,9 @@ public class MainPage extends JFrame {
     public static String CURRENT_PATH = System.getProperty("user.dir");
 
     public static ArrayList<HelpCkBean> ckBeanList = new ArrayList<>();
+
+    public static JComboBox jComboBox1;
+    public static JComboBox jComboBox;
 
     TableModel dataModel;
     JScrollPane scrollpane;
@@ -52,6 +60,7 @@ public class MainPage extends JFrame {
         moneys.add(new MoneyBean("100元现金", "02b48428177a44a4110034497668f808"));
 
         timeTask(this);
+        checkHeart(this);
         mainPage = this;
 
         Container c = getContentPane();
@@ -78,32 +87,42 @@ public class MainPage extends JFrame {
         c.add(ckInputEdtScroll);
 
         JLabel jl = new JLabel("代理"); // 创建一个单行输入框
-        jl.setBounds(150, 350, 200, 30);
+        jl.setBounds(120, 350, 200, 30);
         jl.setFont(new java.awt.Font("微软雅黑", 0, 15));
         jl.setForeground(Color.black);
         c.add(jl);
 
-        JTextField textField = new JTextField("熊猫代理api--ip提取数量=ck数量*10"); // 创建一个单行输入框
+        JTextField textField = new JTextField("【熊猫代理api】ip提取数量=ck数量*线程数"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
-        textField.setBounds(183, 350, 480, 30);
+        textField.setBounds(153, 350, 350, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
-        setTipsInfo(textField, "熊猫代理api--ip提取数量=ck数量*10");
+        setTipsInfo(textField, "【熊猫代理api】ip提取数量=ck数量*线程数");
 
         JButton updateConfig = new JButton("更新配置");
         updateConfig.setBounds(675, 350, 100, 30);
         setJbtBac(updateConfig);
         c.add(updateConfig);
 
-        JComboBox jComboBox = new JComboBox();
-        jComboBox.setBounds(15, 350, 100, 30);
+        jComboBox = new JComboBox();
+        jComboBox.setBounds(15, 350, 90, 30);
         jComboBox.setFont(new java.awt.Font("微软雅黑", 0, 13));
 
         for (int i = 0; i < moneys.size(); i++) {
             jComboBox.addItem(moneys.get(i).getTitle());
         }
         c.add(jComboBox);
+
+        jComboBox1 = new JComboBox();
+        jComboBox1.setBounds(540, 350, 110, 30);
+        jComboBox1.setFont(new java.awt.Font("微软雅黑", 0, 13));
+
+        for (int i = 0; i < 10; i++) {
+            jComboBox1.addItem("单账号" + (i + 1) + "线程");
+        }
+        c.add(jComboBox1);
+
 
         JButton readCkBtn = new JButton("读入账号");
         readCkBtn.setBounds(340, 400, 105, 60);
@@ -162,7 +181,7 @@ public class MainPage extends JFrame {
         addJtaStr("推荐使用熊猫代理 3元1000个ip-5分钟");
         addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
         addJtaStr("熊猫代理api提取格式为json");
-        addJtaStr("ip提取数量=ck数量*12");
+        addJtaStr("ip提取数量=ck数量*线程数量");
         addJtaStr("程序【23.59.50】获取代理！");
         addJtaStr("程序【23.59.59】开始抢红包！");
         addJtaStr("请在左边输入账号！");
@@ -219,16 +238,6 @@ public class MainPage extends JFrame {
             }
         });
 
-        jComboBox.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selIndex = jComboBox.getSelectedIndex();
-                MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
-                System.out.println(jComboBox.getSelectedIndex() + "");
-            }
-        });
-
 
         timer = new Timer(300, new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -249,9 +258,33 @@ public class MainPage extends JFrame {
             configBean = new ConfigBean();
         } else {
             textField.setText(configBean.getProxyUrl());
+            jComboBox1.setSelectedIndex(configBean.getThreadCount());
+            jComboBox.setSelectedIndex(configBean.getSelIndex());
         }
-    }
 
+        jComboBox.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selIndex = jComboBox.getSelectedIndex();
+                MainPage.addJtaStr("当前选择抢:" + moneys.get(selIndex).getTitle());
+                configBean.setSelIndex(selIndex);
+                updateConfig();
+            }
+        });
+
+        jComboBox1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //抢购模式:单帐号10线程
+                MainPage.addJtaStr("抢购模式:单帐号" + (jComboBox1.getSelectedIndex() + 1) + "线程");
+                THREAD_COUNT = jComboBox1.getSelectedIndex();
+                configBean.setThreadCount(THREAD_COUNT);
+                updateConfig();
+            }
+        });
+    }
 
     public static void updateConfig() {
         MainPage.addJtaStr("更新配置文件:" + MainPage.CURRENT_PATH + "/config.json");
@@ -451,6 +484,23 @@ public class MainPage extends JFrame {
                     }
                     mainPage.setTitle("大赢家抢红包【葫芦娃出品】【qq397383523】" + "【时间】" + currentTime);
                 } catch (Exception e) {
+                }
+            }
+        });
+        timer.start();
+    }
+
+
+    /*
+     * 心跳检查
+     * */
+    private void checkHeart(JFrame frame) {
+        Timer timer = new Timer(10000, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                if (CheckHeartUtil.pass()) {
+
+                } else {
+                    frame.dispose();
                 }
             }
         });

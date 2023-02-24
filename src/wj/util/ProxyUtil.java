@@ -1,6 +1,8 @@
-package wj;
+package wj.util;
 
 import com.google.gson.Gson;
+import wj.MainPage;
+import wj.bean.ProxyBean;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,13 +25,16 @@ public class ProxyUtil {
     public static long lastGetTime;
 
     public static HttpURLConnection getHttpURLConnectionProxy(String url) throws IOException {
-        URL realUrl = new URL(url);
+        if (MainPage.configBean.getProxyUrl() == null || MainPage.configBean.getProxyUrl().length() == 0 || !MainPage.configBean.getProxyUrl().startsWith("http")) {
+            return getHttpURLConnection(url);
+        }
+
         ProxyBean.ProxyIp obj = ProxyUtil.getProxyIp();
         if (obj == null) {
             return getHttpURLConnection(url);
         } else {
             Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(obj.getIp().trim(), Integer.parseInt(obj.getPort().trim())));
-            return (HttpURLConnection) realUrl.openConnection(proxy);
+            return (HttpURLConnection) new URL(url).openConnection(proxy);
         }
     }
 
@@ -62,7 +67,7 @@ public class ProxyUtil {
     }
 
     public synchronized static void getIpFromServer() {
-        if (MainPage.configBean.getProxyUrl() == null || MainPage.configBean.getProxyUrl().length() == 0 || MainPage.configBean.getProxyUrl().equals("HttpIp代理地址")) {
+        if (MainPage.configBean.getProxyUrl() == null || MainPage.configBean.getProxyUrl().length() == 0 || !MainPage.configBean.getProxyUrl().startsWith("http")) {
             System.out.println("http代理地址未填写！");
             return;
         }
@@ -105,7 +110,7 @@ public class ProxyUtil {
             // 设置通用的请求属性
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
             connection.connect();

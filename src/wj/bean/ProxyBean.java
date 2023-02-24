@@ -1,4 +1,4 @@
-package wj;
+package wj.bean;
 
 import java.util.ArrayList;
 
