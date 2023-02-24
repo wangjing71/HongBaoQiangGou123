@@ -55,7 +55,6 @@ public class QiangGouUtil {
                                     FileUtil.appendKeyToFile(CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
                                     return;
                                 }
-                                System.out.println("result.length:" + result.length());
                                 if (result.length() == 0) {
                                     empty++;
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
@@ -66,14 +65,19 @@ public class QiangGouUtil {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
                                         System.out.println(CKUtil.getCkPtPin(ck) + ":" + errMsg);
+                                        if (errMsg.length() == 0) {
+                                            empty++;
+                                            System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        } else {
+                                            notEmpty++;
+                                            System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        }
                                         ckBean.setState(errMsg);
-                                        notEmpty++;
-                                        System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                         empty++;
-                                        System.out.println(CKUtil.getCkPtPin(ck) + ":" + "解析异常");
                                         System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
+                                        System.out.println(CKUtil.getCkPtPin(ck) + ":" + "解析异常");
                                         ckBean.setState("解析异常");
                                     }
                                 }
