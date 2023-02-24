@@ -92,13 +92,13 @@ public class MainPage extends JFrame {
         jl.setForeground(Color.black);
         c.add(jl);
 
-        JTextField textField = new JTextField("熊猫代理api--ip提取数量=ck数量*10"); // 创建一个单行输入框
+        JTextField textField = new JTextField("【熊猫代理api】ip提取数量=ck数量*线程数"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
         textField.setBounds(153, 350, 350, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
-        setTipsInfo(textField, "熊猫代理api--ip提取数量=ck数量*10");
+        setTipsInfo(textField, "【熊猫代理api】ip提取数量=ck数量*线程数");
 
         JButton updateConfig = new JButton("更新配置");
         updateConfig.setBounds(675, 350, 100, 30);
