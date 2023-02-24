@@ -14,6 +14,7 @@ import java.util.concurrent.Executors;
 import static wj.MainPage.*;
 
 public class QiangGouUtil {
+    public static int THREAD_COUNT = 5;
     public static int empty = 0;
     public static int notEmpty = 0;
 
@@ -35,7 +36,7 @@ public class QiangGouUtil {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    ExecutorService pl = Executors.newFixedThreadPool(5);
+                    ExecutorService pl = Executors.newFixedThreadPool(THREAD_COUNT);
                     for (int j = 0; j < 100; j++) {
                         pl.execute(new Runnable() {
                             @Override
