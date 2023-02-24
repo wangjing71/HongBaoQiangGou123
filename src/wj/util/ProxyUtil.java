@@ -110,7 +110,7 @@ public class ProxyUtil {
             // 设置通用的请求属性
             connection.setRequestProperty("accept", "*/*");
             connection.setRequestProperty("connection", "Keep-Alive");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUserAgent());
+            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
             connection.connect();
