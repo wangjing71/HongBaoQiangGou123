@@ -62,7 +62,7 @@ public class ProxyUtil {
     }
 
     public synchronized static void getIpFromServer() {
-        if (MainPage.configBean.getProxyUrl() == null || MainPage.configBean.getProxyUrl().length() == 0 || MainPage.configBean.getProxyUrl().equals("HttpIp代理地址")) {
+        if (MainPage.configBean.getProxyUrl() == null || MainPage.configBean.getProxyUrl().length() == 0 || !MainPage.configBean.getProxyUrl().startsWith("http")) {
             System.out.println("http代理地址未填写！");
             return;
         }

@@ -91,7 +91,7 @@ public class FileUtil {
         if (fixedThreadPool == null) {
             synchronized (ExecutorService.class) {
                 if (fixedThreadPool == null) {
-                    fixedThreadPool = Executors.newFixedThreadPool(200);
+                    fixedThreadPool = Executors.newFixedThreadPool(2);
                 }
             }
         }
