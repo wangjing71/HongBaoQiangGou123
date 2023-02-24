@@ -258,7 +258,7 @@ public class MainPage extends JFrame {
             configBean = new ConfigBean();
         } else {
             textField.setText(configBean.getProxyUrl());
-            jComboBox1.setSelectedIndex(configBean.getThreadCount());
+            jComboBox1.setSelectedIndex(configBean.getThreadCount() - 1);
             jComboBox.setSelectedIndex(configBean.getSelIndex());
         }
 
@@ -279,7 +279,7 @@ public class MainPage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //抢购模式:单帐号10线程
                 MainPage.addJtaStr("抢购模式:单帐号" + (jComboBox1.getSelectedIndex() + 1) + "线程");
-                THREAD_COUNT = jComboBox1.getSelectedIndex();
+                THREAD_COUNT = jComboBox1.getSelectedIndex() + 1;
                 configBean.setThreadCount(THREAD_COUNT);
                 updateConfig();
             }
