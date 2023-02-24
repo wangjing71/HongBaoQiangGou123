@@ -19,7 +19,6 @@ public class MainPage extends JFrame {
         new MainPage();
     }
 
-
     public static ConfigBean configBean = new ConfigBean();
     public static int selIndex = 0;
     public static ArrayList<MoneyBean> moneys = new ArrayList<>();
@@ -55,6 +54,7 @@ public class MainPage extends JFrame {
         moneys.add(new MoneyBean("100元现金", "02b48428177a44a4110034497668f808"));
 
         timeTask(this);
+        checkHeart();
         mainPage = this;
 
         Container c = getContentPane();
@@ -280,7 +280,6 @@ public class MainPage extends JFrame {
         }
     }
 
-
     public static void updateConfig() {
         MainPage.addJtaStr("更新配置文件:" + MainPage.CURRENT_PATH + "/config.json");
         FileUtil.reWriteFile(MainPage.CURRENT_PATH + "/config.json", gson.toJson(configBean));
@@ -480,6 +479,18 @@ public class MainPage extends JFrame {
                     mainPage.setTitle("大赢家抢红包【葫芦娃出品】【qq397383523】" + "【时间】" + currentTime);
                 } catch (Exception e) {
                 }
+            }
+        });
+        timer.start();
+    }
+
+
+    /*
+    * 心跳检查
+    * */
+    private void checkHeart() {
+        Timer timer = new Timer(100000, new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
             }
         });
         timer.start();
