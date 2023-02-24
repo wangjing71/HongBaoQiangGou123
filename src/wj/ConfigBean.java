@@ -8,7 +8,7 @@ public class ConfigBean {
     private int startHelpIndex = 0;
     private long helpDelay = 200;
 
-    private int threadCount = 1;
+    private int threadCount = 5;
 
     public String taskHH = "00";
     public String taskMM = "00";

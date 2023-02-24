@@ -33,6 +33,8 @@ public class MainPage extends JFrame {
 
     public static ArrayList<HelpCkBean> ckBeanList = new ArrayList<>();
 
+    public static JComboBox jComboBox1;
+
     TableModel dataModel;
     JScrollPane scrollpane;
     JTable table;
@@ -105,7 +107,7 @@ public class MainPage extends JFrame {
         }
         c.add(jComboBox);
 
-        JComboBox jComboBox1 = new JComboBox();
+        jComboBox1 = new JComboBox();
         jComboBox1.setBounds(540, 350, 110, 30);
         jComboBox1.setFont(new java.awt.Font("微软雅黑", 0, 13));
 
@@ -113,6 +115,7 @@ public class MainPage extends JFrame {
             jComboBox1.addItem("单账号" + (i + 1) + "线程");
         }
         c.add(jComboBox1);
+
 
         JButton readCkBtn = new JButton("读入账号");
         readCkBtn.setBounds(340, 400, 105, 60);
@@ -171,7 +174,7 @@ public class MainPage extends JFrame {
         addJtaStr("推荐使用熊猫代理 3元1000个ip-5分钟");
         addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
         addJtaStr("熊猫代理api提取格式为json");
-        addJtaStr("ip提取数量=ck数量*12");
+        addJtaStr("ip提取数量=ck数量*线程数量");
         addJtaStr("程序【23.59.50】获取代理！");
         addJtaStr("程序【23.59.59】开始抢红包！");
         addJtaStr("请在左边输入账号！");
@@ -245,6 +248,8 @@ public class MainPage extends JFrame {
                 //抢购模式:单帐号10线程
                 MainPage.addJtaStr("抢购模式:单帐号" + (jComboBox1.getSelectedIndex() + 1) + "线程");
                 THREAD_COUNT = jComboBox1.getSelectedIndex();
+                configBean.setThreadCount(THREAD_COUNT);
+                updateConfig();
             }
         });
 
@@ -268,6 +273,7 @@ public class MainPage extends JFrame {
             configBean = new ConfigBean();
         } else {
             textField.setText(configBean.getProxyUrl());
+            jComboBox1.setSelectedIndex(configBean.getThreadCount());
         }
     }
 
