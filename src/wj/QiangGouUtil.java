@@ -36,7 +36,7 @@ public class QiangGouUtil {
                 @Override
                 public void run() {
                     ExecutorService pl = Executors.newFixedThreadPool(5);
-                    for (int j = 0; j < 200; j++) {
+                    for (int j = 0; j < 150; j++) {
                         pl.execute(new Runnable() {
                             @Override
                             public void run() {
@@ -56,11 +56,13 @@ public class QiangGouUtil {
                                     return;
                                 }
                                 if (result.length() == 0) {
+                                    empty++;
                                     System.out.println(CKUtil.getCkPtPin(ck) + ":" + "空数据");
+                                    System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     ckBean.setState("空数据");
                                 } else {
                                     notEmpty++;
-                                    System.out.println("返回非空:" + notEmpty);
+                                    System.out.println("【返回状态】" + "[非空]" + notEmpty + "[空]" + empty);
                                     try {
                                         JSONObject job = new JSONObject(result);
                                         String errMsg = job.optString("msg");
