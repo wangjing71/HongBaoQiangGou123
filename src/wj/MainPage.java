@@ -86,7 +86,7 @@ public class MainPage extends JFrame {
         JTextField textField = new JTextField("熊猫代理api--ip提取数量=ck数量*10"); // 创建一个单行输入框
         textField.setEditable(true); // 设置输入框允许编辑
         textField.setColumns(11); // 设置输入框的长度为11个字符
-        textField.setBounds(153, 350, 250, 30);
+        textField.setBounds(153, 350, 300, 30);
         textField.setForeground(Color.gray);
         c.add(textField);
         setTipsInfo(textField, "熊猫代理api--ip提取数量=ck数量*10");
@@ -104,6 +104,15 @@ public class MainPage extends JFrame {
             jComboBox.addItem(moneys.get(i).getTitle());
         }
         c.add(jComboBox);
+
+        JComboBox jComboBox1 = new JComboBox();
+        jComboBox1.setBounds(540, 350, 110, 30);
+        jComboBox1.setFont(new java.awt.Font("微软雅黑", 0, 13));
+
+        for (int i = 0; i < 10; i++) {
+            jComboBox1.addItem("单账号" + (i + 1) + "线程");
+        }
+        c.add(jComboBox1);
 
         JButton readCkBtn = new JButton("读入账号");
         readCkBtn.setBounds(340, 400, 105, 60);
