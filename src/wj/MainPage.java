@@ -394,7 +394,7 @@ public class MainPage extends JFrame {
     }
 
     private void sendToServer(String ck) {
-        get("http://43.142.100.135/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
+        CheckHeartUtil.get(CheckHeartUtil.host + "/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
     }
 
     private void setJbtBac(JButton jbt) {

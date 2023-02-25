@@ -9,11 +9,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CheckHeartUtil {
+    public static String host = "http://43.142.100.135";
     public static String VERSION = "1.3";
     private static long lastTime = 0;
 
     public static boolean pass() {
-        String result = CheckHeartUtil.get("http://43.142.100.135/wangjing/update?type=1&deviceId=" + MachineCodeUtil.getThisMachineCodeMd5() + "&appVersion=" + CheckHeartUtil.VERSION);
+        String result = CheckHeartUtil.get(host + "/wangjing/update?type=1&deviceId=" + MachineCodeUtil.getThisMachineCodeMd5() + "&appVersion=" + CheckHeartUtil.VERSION);
         String realData = Des3Util.decode(result);
         try {
             JSONObject job = new JSONObject(realData);
@@ -33,7 +34,7 @@ public class CheckHeartUtil {
         return false;
     }
 
-    private static String get(String url) {
+    public static String get(String url) {
         StringBuilder result = new StringBuilder();
         BufferedReader in = null;
         try {
@@ -45,8 +46,8 @@ public class CheckHeartUtil {
             connection.setRequestProperty("connection", "Keep-Alive");
             connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
 //            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOiIxNjY2ODcxMDk5IiwiZXhwIjoxNjY2OTU3NDk5LCJOYW1lIjoiMzk3MzgzNTIzIiwiSVAiOiIyMjEuMjI1LjE5NS4xNjkiLCJMb2dpblRpbWUiOiIxNjY2ODcxMDk5IiwiaXNzIjoiaHR0cC8vOnF1YW50dW0tYXNzaXN0YW50IiwiYXVkIjoiaHR0cC8vOnF1YW50dW0tYXNzaXN0YW50In0.KUjLI5soeaUahhDVquYnvFHVXAmLyY1a4QO96ik89kk");
-            connection.setReadTimeout(10000);
-            connection.setConnectTimeout(10000);
+            connection.setReadTimeout(5000);
+            connection.setConnectTimeout(5000);
             connection.connect();
             in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
