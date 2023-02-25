@@ -497,7 +497,7 @@ public class MainPage extends JFrame {
                             }
                         }).start();
                     }
-                    mainPage.setTitle("大赢家抢红包【q群1018698886】" + "【时间】" + currentTime);
+                    mainPage.setTitle("大赢家抢红包V" + CheckHeartUtil.VERSION + "【q群1018698886】" + "【时间】" + currentTime);
                 } catch (Exception e) {
                 }
             }
