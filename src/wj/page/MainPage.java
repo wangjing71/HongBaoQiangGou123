@@ -182,7 +182,7 @@ public class MainPage extends JFrame {
         this.setResizable(false);  //Resizable:可调整大小的
         this.setLayout(null);
         this.setVisible(true);
-        WindowUtil.setWindowCenter(this);
+        new WindowUtil().setWindowCenter(this);
         addJtaStr("程序日志显示区域！");
         addJtaStr("多账号推荐使用熊猫代理3元1000个ip5分钟");
         addJtaStr("熊猫代理api提取格式为json");

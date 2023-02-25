@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WindowUtil {
-    public static void setWindowCenter(JFrame jFrame) {
+    public void setWindowCenter(JFrame jFrame) {
         int windowWidth = 800;
         int windowHeight = 800;
 
