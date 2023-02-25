@@ -64,6 +64,7 @@ public class QiangGouUtil {
                                     return;
                                 }
                                 if (result.contains("success")) {
+                                    MainPage.addJtaStr(CKUtil.getCkPtPin(ck) + "--已抢到" + moneys.get(selIndex).getTitle());
                                     ckBean.setTag("true");
                                     ckBean.setState("success");
                                     FileUtil.appendKeyToFile(CURRENT_PATH + "/log.txt", TimeUtil.getTime() + ":" + CKUtil.getCkPtPin(ck) + "---" + moneys.get(selIndex).getTitle());
