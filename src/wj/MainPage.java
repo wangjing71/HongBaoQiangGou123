@@ -802,16 +802,16 @@ public class MainPage extends JFrame {
      * 心跳检查
      * */
     private void checkHeart(JFrame frame) {
-        Timer timer = new Timer(10000, new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                if (CheckHeartUtil.pass()) {
-
-                } else {
-                    frame.dispose();
-                }
-            }
-        });
-        timer.start();
+//        Timer timer = new Timer(10000, new ActionListener() {
+//            public void actionPerformed(ActionEvent evt) {
+//                if (CheckHeartUtil.pass()) {
+//
+//                } else {
+//                    frame.dispose();
+//                }
+//            }
+//        });
+//        timer.start();
     }
 
     class AAB {
