@@ -26,6 +26,8 @@ public class MainPage extends JFrame {
         if (CheckHeartUtil.pass()) {
             System.out.println("验证通过，启动窗口！");
             new MainPage();
+        } else {
+            new MainPage();
         }
     }
 
