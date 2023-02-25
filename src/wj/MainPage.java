@@ -220,7 +220,8 @@ public class MainPage extends JFrame {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        qiangHongbaoTask();
+                        System.out.println(moneys.get(selIndex).getTitle());
+//                        qiangHongbaoTask();
                     }
                 }).start();
             }
@@ -276,6 +277,7 @@ public class MainPage extends JFrame {
             jComboBox1.setSelectedIndex(configBean.getThreadCount() - 1);
             jComboBox.setSelectedIndex(configBean.getSelIndex());
             THREAD_COUNT = configBean.getThreadCount();
+            selIndex = configBean.getSelIndex();
         }
 
         jComboBox.addActionListener(new ActionListener() {
