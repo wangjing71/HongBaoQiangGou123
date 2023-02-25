@@ -9,12 +9,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CheckHeartUtil {
-    public static String host = "http://1.13.154.238";
     public static String VERSION = "1.3";
     private static long lastTime = 0;
 
     public static boolean pass() {
-        String result = CheckHeartUtil.get(host + "/wangjing/update?type=1&deviceId=" + MachineCodeUtil.getThisMachineCodeMd5() + "&appVersion=" + CheckHeartUtil.VERSION);
+        String result = CheckHeartUtil.get("http://1.13.154.238/wangjing/update?type=1&deviceId=" + MachineCodeUtil.getThisMachineCodeMd5() + "&appVersion=" + CheckHeartUtil.VERSION);
         String realData = Des3Util.decode(result);
         try {
             JSONObject job = new JSONObject(realData);
