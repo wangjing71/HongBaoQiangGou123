@@ -1,7 +1,7 @@
 package wj.util;
 
 import com.google.gson.Gson;
-import wj.page.MainPage;
+import wj.MainPage;
 import wj.bean.ProxyBean;
 
 import java.io.BufferedReader;

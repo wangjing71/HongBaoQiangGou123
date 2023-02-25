@@ -1,6 +1,6 @@
 package wj.util;
 
-import wj.page.MainPage;
+import wj.MainPage;
 
 import java.util.ArrayList;
 import java.util.Random;

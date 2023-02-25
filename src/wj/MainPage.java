@@ -1,4 +1,4 @@
-package wj.page;
+package wj;
 
 import com.google.gson.Gson;
 import wj.bean.ConfigBean;

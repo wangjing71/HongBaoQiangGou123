@@ -2,8 +2,7 @@ package wj.util;
 
 import org.json.JSONObject;
 import wj.bean.HelpCkBean;
-import wj.page.MainPage;
-import wj.util.*;
+import wj.MainPage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +13,7 @@ import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static wj.page.MainPage.*;
+import static wj.MainPage.*;
 
 public class QiangGouUtil {
     public static int THREAD_COUNT = 5;
