@@ -220,8 +220,8 @@ public class MainPage extends JFrame {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println(moneys.get(selIndex).getTitle());
-//                        qiangHongbaoTask();
+//                        System.out.println(moneys.get(selIndex).getTitle());
+                        qiangHongbaoTask();
                     }
                 }).start();
             }
