@@ -180,14 +180,10 @@ public class MainPage extends JFrame {
         this.setVisible(true);
         WindowUtil.setWindowCenter(this);
         addJtaStr("程序日志显示区域！");
-        addJtaStr("抢购模式:单帐号10线程");
-        addJtaStr("推荐使用熊猫代理 3元1000个ip-5分钟");
-        addJtaStr("http://www.xiongmaodaili.com?invitationCode=C3749794-BBA3-4C23-B3A0-00DD2D75757C");
+        addJtaStr("多账号推荐使用熊猫代理3元1000个ip5分钟");
         addJtaStr("熊猫代理api提取格式为json");
-        addJtaStr("ip提取数量=ck数量*线程数量");
-        addJtaStr("程序【23.59.50】获取代理！");
-        addJtaStr("程序【23.59.59】开始抢红包！");
-        addJtaStr("请在左边输入账号！");
+        addJtaStr("程序【23.59.50】自动获取代理！");
+        addJtaStr("程序【23.59.59】自动抢现金红包！");
 
         readCkBtn.addMouseListener(new MouseAdapter() {
             @Override
@@ -380,7 +376,7 @@ public class MainPage extends JFrame {
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                    }finally {
+                    } finally {
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
