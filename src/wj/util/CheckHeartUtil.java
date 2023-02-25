@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CheckHeartUtil {
-    public static String VERSION = "1.1";
+    public static String VERSION = "1.2";
     private static long lastTime = 0;
 
     public static boolean pass() {
