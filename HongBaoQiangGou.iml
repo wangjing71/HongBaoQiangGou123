@@ -10,5 +10,7 @@
     <orderEntry type="library" name="json" level="project" />
     <orderEntry type="library" name="gson-2.8.0" level="project" />
     <orderEntry type="library" name="HongBaoQiangGou" level="project" />
+    <orderEntry type="library" name="HongBaoQiangGou-sec" level="project" />
+    <orderEntry type="library" name="HongBaoQiangGou-sec (2)" level="project" />
   </component>
 </module>
