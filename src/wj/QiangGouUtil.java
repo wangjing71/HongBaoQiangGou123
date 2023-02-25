@@ -1,6 +1,7 @@
 package wj;
 
 import org.json.JSONObject;
+import wj.bean.HelpCkBean;
 import wj.safe.Des3Util;
 import wj.util.*;
 
