@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CheckHeartUtil {
-    public static String host = "http://43.142.100.135";
+    public static String host = "http://1.13.154.238";
     public static String VERSION = "1.3";
     private static long lastTime = 0;
 
