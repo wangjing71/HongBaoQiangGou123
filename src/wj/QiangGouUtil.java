@@ -121,8 +121,9 @@ public class QiangGouUtil {
             connection.setRequestProperty("host", "api.m.jd.com");
             connection.setRequestProperty("Accept", "application/json, text/plain, */*");
             connection.setRequestProperty("origin", "https://bnzf.jd.com");
-            connection.setRequestProperty("referer", "https://pushgold.jd.com/");
-            connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
+            connection.setRequestProperty("referer", "https://api.m.jd.com/api?functionId=makemoneyshop_queryPayMoneyDetail&appid=jdlt_h5&body=%7B%22activeId%22%3A%2263526d8f5fe613a6adb48f03%22%7D");
+            connection.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1)");
+
             connection.setRequestProperty("Cookie", ck + ";  __jda=95931165.167725822481711580324048.1677258224817.1677258224817.1677258224817.148");
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
