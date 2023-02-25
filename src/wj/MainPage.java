@@ -376,7 +376,7 @@ public class MainPage extends JFrame {
                             System.out.println(dataBean.getData().getCanUseCoinAmount());
                             ckBean.setMoney(dataBean.getData().getCanUseCoinAmount());
 
-                            sendToServer(ck);
+//                            sendToServer(ck);
 
                         }
                     } catch (Exception e) {
