@@ -1,8 +1,8 @@
-package wj;
+package wj.util;
 
 import org.json.JSONObject;
 import wj.bean.HelpCkBean;
-import wj.safe.Des3Util;
+import wj.page.MainPage;
 import wj.util.*;
 
 import java.io.BufferedReader;
@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static wj.MainPage.*;
+import static wj.page.MainPage.*;
 
 public class QiangGouUtil {
     public static int THREAD_COUNT = 5;

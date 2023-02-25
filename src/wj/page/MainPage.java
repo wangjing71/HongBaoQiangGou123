@@ -1,4 +1,4 @@
-package wj;
+package wj.page;
 
 import com.google.gson.Gson;
 import wj.bean.ConfigBean;
@@ -17,7 +17,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-import static wj.QiangGouUtil.*;
+import static wj.util.QiangGouUtil.*;
 
 public class MainPage extends JFrame {
 
