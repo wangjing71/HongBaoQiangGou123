@@ -381,11 +381,11 @@ public class MainPage extends JFrame {
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-//                        try {
-//                            Thread.sleep(200);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             });

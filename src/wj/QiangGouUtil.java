@@ -123,7 +123,7 @@ public class QiangGouUtil {
             connection.setRequestProperty("origin", "https://bnzf.jd.com");
             connection.setRequestProperty("referer", "https://pushgold.jd.com/");
             connection.setRequestProperty("User-Agent", UserAgentUtil.randomUA());
-            connection.setRequestProperty("Cookie", ck);
+            connection.setRequestProperty("Cookie", ck + ";  __jda=95931165.167725822481711580324048.1677258224817.1677258224817.1677258224817.148");
             connection.setReadTimeout(10000);
             connection.setConnectTimeout(10000);
             connection.connect();
