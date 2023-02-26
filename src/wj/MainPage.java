@@ -393,9 +393,6 @@ public class MainPage extends JFrame {
         }
     }
 
-    private void sendToServer(String ck) {
-
-    }
 
     private void setJbtBac(JButton jbt) {
         jbt.setFocusPainted(false);
