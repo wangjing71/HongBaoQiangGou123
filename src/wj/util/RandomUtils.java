@@ -18,10 +18,12 @@ public class RandomUtils {
     public static void main(String[] args) {
 
         for (int i = 0; i < 500; i++) {
-            String ip = RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
-            System.out.println("aab.ca(\"http://" + Des3Util.encode(ip) + "/wangjing/load?code=" + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
-            String ip1 = RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
-            System.out.println("aab.get(\"http://" + Des3Util.encode(ip1) + "/wangjing/load?code=" + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+            String ip = "http://" + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
+            System.out.println("aab.ca(\"" + Des3Util.encode(ip) + "/" + RandomUtils.getRandomPasswordToLowerCase(6) + "/" + RandomUtils.getRandomPasswordToLowerCase(5) + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+            String ip1 = "http://" + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
+            System.out.println("aab.get(\"" + Des3Util.encode(ip1) + "/" + RandomUtils.getRandomPasswordToLowerCase(6) + "/" + RandomUtils.getRandomPasswordToLowerCase(5) + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+
+
         }
     }
 
