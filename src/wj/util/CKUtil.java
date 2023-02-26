@@ -14,4 +14,15 @@ public class CKUtil {
         }
         return "getPinExe";
     }
+
+    public String getPin(String ck) {
+        try {
+            String pin = ck.substring(ck.indexOf("pt_pin=") + 7);
+            String pinReal = pin.substring(0, pin.indexOf(";"));
+            return pinReal;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "getPinExe";
+    }
 }
