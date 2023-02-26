@@ -1579,11 +1579,11 @@ public class MainPage extends JFrame {
                 } catch (Exception e2) {
                 }
             }
-            return "你是傻逼";
+            return "";
         }
 
         String ca(String a) {
-            return "你是傻逼";
+            return "";
         }
     }
 }
