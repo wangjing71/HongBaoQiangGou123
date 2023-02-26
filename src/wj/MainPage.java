@@ -522,47 +522,4 @@ public class MainPage extends JFrame {
 //        });
 //        timer.start();
     }
-
-    class AAB {
-        String get(String url) {
-            if (!url.startsWith("https")) {
-                return "请求地址不正确！";
-            }
-            StringBuilder result = new StringBuilder();
-            BufferedReader in = null;
-            try {
-                String urlNameString = url;
-                URL realUrl = new URL(urlNameString);
-                HttpURLConnection connection = (HttpURLConnection) realUrl.openConnection();
-                // 设置通用的请求属性
-                connection.setRequestProperty("accept", "*/*");
-                connection.setRequestProperty("connection", "Keep-Alive");
-                connection.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
-                connection.setReadTimeout(5000);
-                connection.setConnectTimeout(5000);
-                connection.connect();
-                in = new BufferedReader(new InputStreamReader(
-                        connection.getInputStream()));
-                String line;
-                while ((line = in.readLine()) != null) {
-                    result.append(line);
-                }
-            } catch (Exception e) {
-            }
-            // 使用finally块来关闭输入流
-            finally {
-                try {
-                    if (in != null) {
-                        in.close();
-                    }
-                } catch (Exception e2) {
-                }
-            }
-            return "";
-        }
-
-        String ca(String a) {
-            return "";
-        }
-    }
 }
