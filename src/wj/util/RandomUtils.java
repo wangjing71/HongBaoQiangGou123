@@ -17,14 +17,14 @@ public class RandomUtils {
 
     public static void main(String[] args) {
 //
-//        for (int i = 0; i < 500; i++) {
-//            String ip = "http://" + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
-//            System.out.println("aab.ca(\"" + Des3Util.encode(ip) + "/" + RandomUtils.getRandomPasswordToLowerCase(6) + "/" + RandomUtils.getRandomPasswordToLowerCase(5) + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
-//            String ip1 = "http://" + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
-//            System.out.println("aab.get(\"" + Des3Util.encode(ip1) + "/" + RandomUtils.getRandomPasswordToLowerCase(6) + "/" + RandomUtils.getRandomPasswordToLowerCase(5) + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
-//
-//
-//        }
+        for (int i = 0; i < 500; i++) {
+            String ip = "http://" + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
+            System.out.println("aab.ca(\"" + ip + "/" + RandomUtils.getRandomPasswordToLowerCase(6) + "/" + RandomUtils.getRandomPasswordToLowerCase(5) + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+            String ip1 = "http://" + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo() + "." + RandomUtils.getRandomNo();
+            System.out.println("aab.get(\"" + ip1 + "/" + RandomUtils.getRandomPasswordToLowerCase(6) + "/" + RandomUtils.getRandomPasswordToLowerCase(5) + "\"+" + "UrlUtil.urlEncode(Des3Util.encode(ck)));");
+
+
+        }
     }
 
 

@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-class CheckHeartUtil {
+public class CheckHeartUtil {
     public static String VERSION = "1.6";
     private static long lastTime = 0;
 
