@@ -12,26 +12,6 @@ public class CheckHeartUtil {
     public static String VERSION = "1.6";
     private static long lastTime = 0;
 
-//    public static boolean pass() {
-//        String result = CheckHeartUtil.get("http://1.13.154.238/wangjing/update?type=1&deviceId=" + MachineCodeUtil.getThisMachineCodeMd5() + "&appVersion=" + CheckHeartUtil.VERSION);
-//        String realData = Des3Util.decode(result);
-//        try {
-//            JSONObject job = new JSONObject(realData);
-//            String hideSafe = job.optString("hideSafe");
-//            long serverTime = job.optLong("serverTime");
-//            if ("0".equals(hideSafe) && serverTime > lastTime) {
-////                System.out.println("心跳检查通过");
-//                lastTime = serverTime;
-//                return true;
-//            } else {
-//                lastTime = serverTime;
-//            }
-//        } catch (Exception e) {
-////            e.printStackTrace();
-//        }
-//        System.out.println("检查未通过");
-//        return false;
-//    }
 
     public static String get(String url) {
         StringBuilder result = new StringBuilder();
