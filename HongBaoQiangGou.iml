@@ -9,25 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="json" level="project" />
     <orderEntry type="library" name="gson-2.8.0" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (2)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (3)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (4)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (5)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (6)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (7)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (8)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (9)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (10)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (11)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (12)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (13)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou (2)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou (3)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou (4)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou-sec (14)" level="project" />
-    <orderEntry type="library" name="HongBaoQiangGou (5)" level="project" />
+
   </component>
 </module>
